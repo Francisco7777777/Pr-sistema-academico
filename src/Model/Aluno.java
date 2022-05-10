@@ -10,6 +10,11 @@ public class Aluno extends Pessoa{
         this.matricula = matricula;
     }
 
+    public Aluno(String email, String senha) {
+        super(email, senha);
+    }
+    
+
     public Long getMatricula() {
         return matricula;
     }
@@ -64,6 +69,22 @@ public class Aluno extends Pessoa{
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
     
     

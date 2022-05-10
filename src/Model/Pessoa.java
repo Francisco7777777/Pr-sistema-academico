@@ -9,6 +9,8 @@ public class Pessoa {
     protected Long cpf;
     protected Long telefone;
     protected String endereco;
+    protected String email;
+    protected String senha;
 
     public Pessoa(int id, String nome, Date dataNasc, Long cpf, Long telefone, String endereco) {
         this.id = id;
@@ -19,6 +21,12 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
+    public Pessoa(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
+
+       
     public int getId() {
         return id;
     }
@@ -65,6 +73,22 @@ public class Pessoa {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
     
     
