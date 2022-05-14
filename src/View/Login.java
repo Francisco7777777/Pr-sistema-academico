@@ -4,7 +4,13 @@
  */
 package View;
 
+//import com.sun.jdi.connect.spi.Connection;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.DriverManager;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,13 +37,13 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Login = new javax.swing.JLabel();
-        Login.setOpaque(false);
-        Login.setBackground(new java.awt.Color(200, 200, 200));
-        Usuario = new javax.swing.JLabel();
-        Senha = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        labelLogin = new javax.swing.JLabel();
+        labelLogin.setOpaque(false);
+        labelLogin.setBackground(new java.awt.Color(200, 200, 200));
+        labelUsuario = new javax.swing.JLabel();
+        labelSenha = new javax.swing.JLabel();
+        usuario = new javax.swing.JTextField();
+        senha = new javax.swing.JPasswordField();
         botaoLogin = new javax.swing.JButton();
         botaoSuporte = new javax.swing.JButton();
         botapSair = new javax.swing.JButton();
@@ -46,28 +52,28 @@ public class Login extends javax.swing.JFrame {
         setBackground(java.awt.SystemColor.desktop);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        Login.setBackground(new java.awt.Color(200, 200, 200));
-        Login.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        Login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Login.setText("Sistema acadêmico");
-        Login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelLogin.setBackground(new java.awt.Color(200, 200, 200));
+        labelLogin.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        labelLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelLogin.setText("Sistema acadêmico");
+        labelLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        Usuario.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
-        Usuario.setText("Usuário");
+        labelUsuario.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
+        labelUsuario.setText("Usuário");
 
-        Senha.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
-        Senha.setText("Senha");
+        labelSenha.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
+        labelSenha.setText("Senha");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                usuarioActionPerformed(evt);
             }
         });
 
         botaoLogin.setBackground(new java.awt.Color(0, 62, 222));
         botaoLogin.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botaoLogin.setForeground(new java.awt.Color(255, 255, 255));
-        botaoLogin.setText("Logar");
+        botaoLogin.setText("Entrar");
         botaoLogin.setBorderPainted(false);
         botaoLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,11 +106,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(449, 449, 449)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Usuario)
+                        .addComponent(labelUsuario)
                         .addGap(86, 86, 86)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,22 +120,22 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(botaoSuporte, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
                                 .addComponent(botapSair, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Senha))))
+                            .addComponent(labelSenha))))
                 .addContainerGap(388, Short.MAX_VALUE))
-            .addComponent(Login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Usuario)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelUsuario)
+                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Senha)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelSenha)
+                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,18 +145,28 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_usuarioActionPerformed
 
     private void botaoSuporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSuporteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoSuporteActionPerformed
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
-        // TODO add your handling code here:
+        String usu = usuario.getText();
+        String sen = senha.getText();
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/academico","root","");
+        } catch (Exception e) {
+        }
+        new Funcoes().setVisible(true);
+        
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     /**
@@ -189,13 +205,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Login;
-    private javax.swing.JLabel Senha;
-    private javax.swing.JLabel Usuario;
     private javax.swing.JButton botaoLogin;
     private javax.swing.JButton botaoSuporte;
     private javax.swing.JButton botapSair;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel labelLogin;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JLabel labelUsuario;
+    private javax.swing.JPasswordField senha;
+    private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }
