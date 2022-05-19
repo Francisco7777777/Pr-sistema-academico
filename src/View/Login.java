@@ -159,14 +159,14 @@ public class Login extends javax.swing.JFrame {
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
         String usu = usuario.getText();
         String sen = senha.getText();
-        
+        /*
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/academico","root","");
         } catch (Exception e) {
         }
         new Funcoes().setVisible(true);
-        
+        */
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     /**
