@@ -4,6 +4,13 @@
  */
 package View;
 
+import dao.Conector;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Evandro
@@ -45,32 +52,32 @@ public class CadAluno extends javax.swing.JFrame {
 
         labelTitulo.setBackground(new java.awt.Color(204, 204, 204));
         labelTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        labelTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText("Cadastrar Aluno");
 
         labelNome.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        labelNome.setForeground(new java.awt.Color(0, 0, 0));
+        labelNome.setForeground(new java.awt.Color(255, 255, 255));
         labelNome.setText("Nome");
 
         labelDataNasc.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        labelDataNasc.setForeground(new java.awt.Color(0, 0, 0));
+        labelDataNasc.setForeground(new java.awt.Color(255, 255, 255));
         labelDataNasc.setText("Data de nascimento");
 
         labelTelefone.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        labelTelefone.setForeground(new java.awt.Color(0, 0, 0));
+        labelTelefone.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefone.setText("Telefone");
 
         labelCPF.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        labelCPF.setForeground(new java.awt.Color(0, 0, 0));
+        labelCPF.setForeground(new java.awt.Color(255, 255, 255));
         labelCPF.setText("CPF");
 
         labelEndereco.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        labelEndereco.setForeground(new java.awt.Color(0, 0, 0));
+        labelEndereco.setForeground(new java.awt.Color(255, 255, 255));
         labelEndereco.setText("Endereço");
 
         labelMatricula.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        labelMatricula.setForeground(new java.awt.Color(0, 0, 0));
+        labelMatricula.setForeground(new java.awt.Color(255, 255, 255));
         labelMatricula.setText("Matricula");
 
         nome.setForeground(new java.awt.Color(0, 0, 0));
@@ -88,7 +95,12 @@ public class CadAluno extends javax.swing.JFrame {
         enviar.setBackground(new java.awt.Color(0, 102, 255));
         enviar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         enviar.setForeground(new java.awt.Color(255, 255, 255));
-        enviar.setText("Enviar");
+        enviar.setText("Salvar");
+        enviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enviarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,7 +119,6 @@ public class CadAluno extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(labelDataNasc)
-                                .addComponent(labelTelefone)
                                 .addComponent(labelCPF)
                                 .addComponent(labelEndereco)
                                 .addComponent(labelMatricula))
@@ -115,9 +126,12 @@ public class CadAluno extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(dataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(ende, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tel, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(labelTelefone)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tel, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(308, 308, 308))
         );
         layout.setVerticalGroup(
@@ -130,14 +144,16 @@ public class CadAluno extends javax.swing.JFrame {
                     .addComponent(labelNome)
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelDataNasc)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(dataNasc)
-                        .addGap(1, 1, 1)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTelefone)
-                    .addComponent(tel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelDataNasc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTelefone))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCPF)
@@ -153,11 +169,29 @@ public class CadAluno extends javax.swing.JFrame {
                     .addComponent(ende, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
+        try {
+            Connection conn = new Conector().getConnection();
+            
+            String sql = "insert into aluno(email, senha) values ('Evandro','123456'); ";
+            
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.execute();
+            
+            conn.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CadAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_enviarActionPerformed
 
     /**
      * @param args the command line arguments
