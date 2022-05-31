@@ -18,22 +18,22 @@ public class SistemaAcademico {
         //Entradas de texto
         System.out.println("Digite o nome");
         String nome = Obj.nextLine();
-        System.out.println("Digite o Endereço");
-        String endereco = Obj.nextLine();
+        
+        System.out.println("Digite o email");
+        String email = Obj.nextLine();
+        
+        System.out.println("Digite a senha");
+        String senha = Obj.nextLine();
         
         //Entradas numericas
-        System.out.println("Digite o id");
-        int id = Obj.nextInt();
-        System.out.println("Digite o CPF");
-        Long cpf = Obj.nextLong();
-        System.out.println("Digite o Telefone");
-        Long telefone = Obj.nextLong();
         System.out.println("Digite o Matricula");
-        Long matricula = Obj.nextLong();
+        Integer matricula = Obj.nextInt();
         
-        Aluno aluno = new Aluno( matricula, id, nome, null, cpf, telefone, endereco);
-        System.out.println(aluno.getNome());
+        
+        Aluno aluno01 = new Aluno(matricula, nome, email, senha);
+        System.out.println(aluno01.getNome() + " " + aluno01.getEmail() + " " + aluno01.getSenha());
+                
+        Obj.close();
         
     }
-    
 }
