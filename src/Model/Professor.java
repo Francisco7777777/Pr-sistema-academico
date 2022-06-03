@@ -10,6 +10,10 @@ public class Professor extends Pessoa{
     private Integer num_Registro;
     private boolean adiministrador;
 
+    public Professor() {
+        
+    }
+    
     public Professor(Integer num_Registro, boolean adiministrador, String nome, String email, String senha) {
         super(nome, email, senha);
         this.num_Registro = num_Registro;
