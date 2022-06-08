@@ -7,15 +7,16 @@ import java.util.Date;
  * @author Eugênio Oliveira
  */
 public class Semestre {
-   private int id;
-   private Date data_inicial;
-   private Date data_final;
-   private String status;
+    private int id;
+    private Date data_inicial;
+    private Date data_final;
+    private boolean status;
 
     public Semestre() {
+        
     }
 
-    public Semestre(int id, Date data_inicial, Date data_final, String status) {
+    public Semestre(int id, Date data_inicial, Date data_final, boolean status) {
         this.id = id;
         this.data_inicial = data_inicial;
         this.data_final = data_final;
@@ -34,7 +35,7 @@ public class Semestre {
         return data_final;
     }
 
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
@@ -50,7 +51,7 @@ public class Semestre {
         this.data_final = data_final;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
     

@@ -29,7 +29,7 @@ public class Professor extends Pessoa{
         this.num_Registro = num_Registro;
     }
 
-    public boolean isAdiministrador() {
+    public boolean getAdiministrador() {
         return adiministrador;
     }
 
