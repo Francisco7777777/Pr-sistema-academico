@@ -2,7 +2,7 @@
 package Model.dao.impl;
 
 import Model.Professor;
-import modeo.dao.ProfessorDAO;
+import Modeo.dao.ProfessorDAO;
 import java.sql.Connection;
 import java.util.List;
 

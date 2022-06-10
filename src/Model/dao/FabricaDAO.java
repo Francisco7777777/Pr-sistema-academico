@@ -1,5 +1,5 @@
 
-package modeo.dao;
+package Modeo.dao;
 
 import Model.dao.impl.ProfessorDaoJDBC;
 import dao.DB;
@@ -9,7 +9,6 @@ import dao.DB;
  * 
  */
 public class FabricaDAO {
-    
     // Classe alciliar que fica responsavel por intanciar os objetos: 
     public static ProfessorDAO criarProfessorDao() {
 	return new ProfessorDaoJDBC(DB.getConnection()); 
