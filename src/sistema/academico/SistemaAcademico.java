@@ -1,9 +1,13 @@
 
 package sistema.academico;
-
+/*
 import java.util.Scanner;
 import Model.Aluno;
 import Model.Professor;
+*/
+
+import java.sql.Connection;
+import dao.DB;
 
 /**
  * @author Evandro
@@ -14,6 +18,7 @@ public class SistemaAcademico {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /*
         Scanner Obj = new Scanner(System.in);
         
         //Entradas de texto
@@ -41,6 +46,9 @@ public class SistemaAcademico {
             + professor.getSenha() + " " + professor.getAdiministrador());
         
         Obj.close();
+        */
         
+        Connection conn = DB.getConnection();
+	DB.closeConnection();
     }
 }

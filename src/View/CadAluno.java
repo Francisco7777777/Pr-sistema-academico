@@ -4,7 +4,7 @@
  */
 package View;
 
-import dao.Conector;
+import dao.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -177,7 +177,7 @@ public class CadAluno extends javax.swing.JFrame {
 
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
         try {
-            Connection conn = new Conector().getConnection();
+            Connection conn = new DB().getConnection();
             
             String sql = "insert into aluno(email, senha) values ('Evandro','123456'); ";
             
