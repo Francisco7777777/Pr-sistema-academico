@@ -1,13 +1,17 @@
 
-package sistema.academico;
+package sistema_academico;
 /*
 import java.util.Scanner;
 import Model.Aluno;
 import Model.Professor;
 */
 
-import java.sql.Connection;
 import dao.DB;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 /**
  * @author Evandro
@@ -48,7 +52,30 @@ public class SistemaAcademico {
         Obj.close();
         */
         
-        Connection conn = DB.getConnection();
-	DB.closeConnection();
+        Connection conn = null;
+	Statement st = null;
+	ResultSet rs = null;
+		
+	try {
+            conn = DB.getConnection();           // Abrindo uma conecção.
+            st = conn.createStatement();  // Instanciei um objeto o "st".
+			
+            rs = st.executeQuery("select * from professor");
+			
+            while (rs.next()) {
+                System.out.println(rs.getInt(1) + ", " + rs.getString(2)    
+                + ", " + rs.getString(3) + ", " + rs.getString(4)+ ", "
+                + rs.getBoolean(5));
+            }
+	}
+	catch (SQLException e) {
+            e.printStackTrace();
+		}
+	finally {
+            DB.closeResultSet(rs);	
+            DB.closeStatement(st);
+            DB.closeConnection();
+	}
     }
+
 }
