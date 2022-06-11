@@ -11,6 +11,7 @@ public class Boletim {
     private Integer id;
     private Double nota_1;
     private Double nota_2;
+    private Double media;
     private Situacao situacao;
     
     private Aluno alunos;
@@ -20,10 +21,11 @@ public class Boletim {
     public Boletim() {
     }
 
-    public Boletim(Integer id, Double nota_1, Double nota_2, Situacao situacao, Aluno alunos, Disciplina disciplina) {
+    public Boletim(Integer id, Double nota_1, Double nota_2, Double media, Situacao situacao, Aluno alunos, Disciplina disciplina) {
         this.id = id;
         this.nota_1 = nota_1;
         this.nota_2 = nota_2;
+        this.media = media;
         this.situacao = situacao;
         this.alunos = alunos;
         this.disciplina = disciplina;
@@ -54,6 +56,14 @@ public class Boletim {
         this.nota_2 = nota_2;
     }
 
+    public Double getMedia() {
+        return media;
+    }
+
+    public void setMedia(Double media) {
+        this.media = media;
+    }
+    
     public Situacao getSituacao() {
         return situacao;
     }

@@ -14,9 +14,7 @@ public interface ProfessorDAO {
 		
     void update(Professor obj);
 		
-    void deletePorNumR(Integer id);
+    void deletePorNumR(Integer numR);
 
-    Professor encontrarPorNumR(Integer id);
-
-    List<Professor> findAll();      // Emcontrar tudo.
+    List<Professor> listarProf();      // Emcontrar tudo.
 }
