@@ -1,7 +1,7 @@
 
 package DAO;
 
-import Model.dao.impl.ProfessorDaoJDBC;
+import ImplemDAO.ProfessorDaoJDBC;
 import DB.DB;
 
 /**

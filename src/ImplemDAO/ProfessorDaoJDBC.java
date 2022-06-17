@@ -1,5 +1,5 @@
 
-package Model.dao.impl;
+package ImplemDAO;
 
 import Model.Professor;
 import DAO.ProfessorDAO;
