@@ -4,7 +4,6 @@ package ImplemDAO;
 import Model.Professor;
 import DAO.ProfessorDAO;
 import DB.DB;
-import DB.DbException;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.util.List;
@@ -44,7 +43,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
             int l = st.executeUpdate();
 
         } catch (SQLException e) {
-            throw new DbException(e.getMessage()); 
+            e.printStackTrace(); 
         }
         finally {
             DB.closeStatement(st);
@@ -70,7 +69,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
             st.executeUpdate();
 
         } catch (SQLException e) {
-            throw new DbException(e.getMessage()); 
+            e.printStackTrace(); 
         }
         finally {
             DB.closeStatement(st);
@@ -89,7 +88,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
             st.executeUpdate();
         }
         catch (SQLException e) {
-            throw new DbException(e.getMessage());
+            e.printStackTrace();
         }
         finally {
             DB.closeStatement(st);
@@ -101,11 +100,11 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
     public List<Professor> listarProf() {
         PreparedStatement st = null;
         ResultSet rs = null;
-
+        List<Professor> lista = new ArrayList<>();
+        
         try {
             st = conn.prepareStatement("SELECT * FROM professor");
-            rs = st.executeQuery();             
-            List<Professor> lista = new ArrayList<>();
+            rs = st.executeQuery();
             
             while(rs.next()) {
                 Professor obj = new Professor();
@@ -117,15 +116,15 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
                 
                 lista.add(obj);
             }
-            return lista;
         } 
         catch (SQLException e) {
-            throw new DbException(e.getMessage());
+            e.printStackTrace();
         }
         finally {
             DB.closeStatement(st);
             DB.closeResultSet(rs);
         }
+        return lista;
     }
 
 }

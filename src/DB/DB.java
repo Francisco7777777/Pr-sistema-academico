@@ -26,7 +26,7 @@ public class DB {
                 conn = DriverManager.getConnection(BD_URL, USER, PASS);
             } 
             catch (SQLException e) {
-                throw new DbException(e.getMessage());
+                e.printStackTrace();
             }
         }
         return conn;
@@ -39,7 +39,7 @@ public class DB {
             try {
                 conn.close();
             } catch (SQLException e) {
-                throw new DbException(e.getMessage());
+                e.printStackTrace();
             }
         }
     }
@@ -50,7 +50,7 @@ public class DB {
             try {
                 st.close();
             } catch (SQLException e) {
-                throw new DbException(e.getMessage());
+                e.printStackTrace();
             }
         }
     }
@@ -61,7 +61,7 @@ public class DB {
             try {
                 rs.close();
             } catch (SQLException e) {
-                throw new DbException(e.getMessage());
+                e.printStackTrace();
             }
         }
     }
