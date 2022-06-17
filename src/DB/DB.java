@@ -1,4 +1,4 @@
-package dao;
+package DB;
 
 import java.sql.ResultSet;
 import java.sql.Statement;

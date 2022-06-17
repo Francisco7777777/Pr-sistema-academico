@@ -1,8 +1,8 @@
 
-package Modeo.dao;
+package DAO;
 
 import Model.dao.impl.ProfessorDaoJDBC;
-import dao.DB;
+import DB.DB;
 
 /**
  * @author Francisco Mendonça

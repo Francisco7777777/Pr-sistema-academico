@@ -1,5 +1,5 @@
 
-package Modeo.dao;
+package DAO;
 
 import Model.Professor;
 import java.util.List;

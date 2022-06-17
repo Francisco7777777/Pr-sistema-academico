@@ -1,5 +1,5 @@
 
-package dao;
+package DB;
 
 /**
  *

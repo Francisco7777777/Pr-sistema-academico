@@ -2,9 +2,9 @@
 package Model.dao.impl;
 
 import Model.Professor;
-import Modeo.dao.ProfessorDAO;
-import dao.DB;
-import dao.DbException;
+import DAO.ProfessorDAO;
+import DB.DB;
+import DB.DbException;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.util.List;
