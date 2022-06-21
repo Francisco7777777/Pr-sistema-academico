@@ -1,8 +1,6 @@
 
 package Model;
 
-import Model.enums.Situacao;
-
 /**
  *
  * @author Francisco Mendonça

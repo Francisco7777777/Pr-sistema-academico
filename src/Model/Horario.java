@@ -1,8 +1,6 @@
 
 package Model;
 
-import Model.enums.Turno;
-
 /**
  *
  * @author Francisco Mendonça

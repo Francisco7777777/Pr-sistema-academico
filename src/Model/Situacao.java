@@ -1,5 +1,5 @@
 
-package Model.enums;
+package Model;
 
 /**
  *
