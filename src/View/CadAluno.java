@@ -4,7 +4,7 @@
  */
 package View;
 
-import DB.DB;
+import ImplemDAO.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
