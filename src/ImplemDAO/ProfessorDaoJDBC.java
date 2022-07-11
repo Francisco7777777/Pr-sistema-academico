@@ -3,7 +3,6 @@ package ImplemDAO;
 
 import Model.Professor;
 import DAO.ProfessorDAO;
-import DB.DB;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.util.List;
