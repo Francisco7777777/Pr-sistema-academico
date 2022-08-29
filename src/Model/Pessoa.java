@@ -6,8 +6,7 @@ abstract public class Pessoa {
     protected String email;
     protected String senha;
 
-    public Pessoa() {
-        
+    public Pessoa() { 
     }
 
     public Pessoa(String nome, String email, String senha) {

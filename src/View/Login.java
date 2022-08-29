@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package View;
 
 //import com.sun.jdi.connect.spi.Connection;
@@ -12,12 +9,19 @@ import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Controller.LoginController;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Evandro
  */
 public class Login extends javax.swing.JFrame {
-
+    
+    // Assim o LoginController será acessivel de qualquer ponto dessa classe.
+    private final  LoginController controller;
+    
     /**
      * Creates new form Login
      */
@@ -26,6 +30,9 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Color fundo = new Color(245,245,245);
         getContentPane().setBackground(fundo);
+        
+        // Quando a viw for inicialisada, o controller sera instamciado.
+        controller = new LoginController(this);
     }
 
     /**
@@ -46,7 +53,7 @@ public class Login extends javax.swing.JFrame {
         usuario = new javax.swing.JTextField();
         senha = new javax.swing.JPasswordField();
         botaoLogin = new javax.swing.JButton();
-        botapSair = new javax.swing.JButton();
+        botaoSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.SystemColor.desktop);
@@ -81,11 +88,11 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        botapSair.setBackground(new java.awt.Color(255, 0, 0));
-        botapSair.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        botapSair.setForeground(new java.awt.Color(255, 255, 255));
-        botapSair.setText("Sair");
-        botapSair.setBorderPainted(false);
+        botaoSair.setBackground(new java.awt.Color(255, 0, 0));
+        botaoSair.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        botaoSair.setForeground(new java.awt.Color(255, 255, 255));
+        botaoSair.setText("Sair");
+        botaoSair.setBorderPainted(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,7 +110,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(botapSair, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2))))
                     .addComponent(labelSenha))
                 .addGap(27, 27, 27))
@@ -122,7 +129,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botapSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -154,16 +161,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_usuarioActionPerformed
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
-        String usu = usuario.getText();
-        String sen = senha.getText();
-        /*
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/academico","root","");
-        } catch (Exception e) {
-        }
-        new Funcoes().setVisible(true);
-        */
+    
+        // Ao clicar no butão o método serar chamado.
+        controller.altenticarUsuario();
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     /**
@@ -203,7 +203,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;
-    private javax.swing.JButton botapSair;
+    private javax.swing.JButton botaoSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelTitulo;
@@ -211,4 +211,24 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField senha;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
+
+    
+    public JPasswordField getSenha() {
+        return senha;
+    }
+
+    public void setSenha(JPasswordField senha) {
+        this.senha = senha;
+    }
+
+    public JTextField getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(JTextField usuario) {
+        this.usuario = usuario;
+    }
+
+    
+
 }
