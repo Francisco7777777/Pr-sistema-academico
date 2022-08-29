@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package View;
 
-import ImplemDAO.DB;
+import DAO.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

@@ -1,9 +1,6 @@
 
 package DAO;
 
-import ImplemDAO.ProfessorDaoJDBC;
-import ImplemDAO.DB;
-
 /**
  * @author Francisco Mendonça
  * 

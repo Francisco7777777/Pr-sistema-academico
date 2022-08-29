@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package View;
 
-import ImplemDAO.DB;
+import DAO.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -57,7 +54,7 @@ public class CadProf extends javax.swing.JFrame {
         labelTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTitulo.setText("Cadastrar Aluno");
+        labelTitulo.setText("Cadastrar Professor");
         labelTitulo.setOpaque(true);
 
         labelNome.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
