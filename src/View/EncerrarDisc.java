@@ -32,6 +32,7 @@ public class EncerrarDisc extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setBackground(new java.awt.Color(0, 102, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -80,6 +81,7 @@ public class EncerrarDisc extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

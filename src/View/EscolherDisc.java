@@ -40,6 +40,7 @@ public class EscolherDisc extends javax.swing.JFrame {
         botãoConfirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         labelTitulo.setBackground(new java.awt.Color(0, 102, 255));
         labelTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -48,7 +49,6 @@ public class EscolherDisc extends javax.swing.JFrame {
         labelTitulo.setText("Escolher Disciplina");
         labelTitulo.setOpaque(true);
 
-        buttonGroup1.add(disciplina1);
         disciplina1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina1.setForeground(new java.awt.Color(255, 255, 255));
         disciplina1.setText("Disciplina 1");
@@ -58,37 +58,30 @@ public class EscolherDisc extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(disciplina2);
         disciplina2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina2.setForeground(new java.awt.Color(255, 255, 255));
         disciplina2.setText("Disciplina 2");
 
-        buttonGroup1.add(disciplina3);
         disciplina3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina3.setForeground(new java.awt.Color(255, 255, 255));
         disciplina3.setText("Disciplina 3");
 
-        buttonGroup1.add(disciplina4);
         disciplina4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina4.setForeground(new java.awt.Color(255, 255, 255));
         disciplina4.setText("Disciplina 4");
 
-        buttonGroup1.add(disciplina5);
         disciplina5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina5.setForeground(new java.awt.Color(255, 255, 255));
         disciplina5.setText("Disciplina 5");
 
-        buttonGroup1.add(disciplina6);
         disciplina6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina6.setForeground(new java.awt.Color(255, 255, 255));
         disciplina6.setText("Disciplina 6");
 
-        buttonGroup1.add(disciplina7);
         disciplina7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina7.setForeground(new java.awt.Color(255, 255, 255));
         disciplina7.setText("Disciplina 7");
 
-        buttonGroup1.add(disciplina8);
         disciplina8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina8.setForeground(new java.awt.Color(255, 255, 255));
         disciplina8.setText("Disciplina 8");
@@ -168,6 +161,7 @@ public class EscolherDisc extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void disciplina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplina1ActionPerformed

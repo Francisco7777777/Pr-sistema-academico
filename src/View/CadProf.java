@@ -50,6 +50,8 @@ public class CadProf extends javax.swing.JFrame {
         enviar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setResizable(false);
 
         labelTitulo.setBackground(new java.awt.Color(0, 102, 255));
         labelTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -207,6 +209,7 @@ public class CadProf extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed

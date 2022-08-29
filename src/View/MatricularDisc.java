@@ -30,6 +30,7 @@ public class MatricularDisc extends javax.swing.JFrame {
         labelTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         disciplina1 = new javax.swing.JCheckBox();
+        disciplina2 = new javax.swing.JCheckBox();
         disciplina3 = new javax.swing.JCheckBox();
         disciplina4 = new javax.swing.JCheckBox();
         disciplina5 = new javax.swing.JCheckBox();
@@ -37,9 +38,9 @@ public class MatricularDisc extends javax.swing.JFrame {
         disciplina7 = new javax.swing.JCheckBox();
         disciplina8 = new javax.swing.JCheckBox();
         botaoConfirmar = new javax.swing.JButton();
-        disciplina2 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         labelTitulo.setBackground(new java.awt.Color(0, 102, 255));
         labelTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -49,37 +50,35 @@ public class MatricularDisc extends javax.swing.JFrame {
         labelTitulo.setOpaque(true);
         labelTitulo.setPreferredSize(new java.awt.Dimension(295, 100));
 
-        buttonGroup1.add(disciplina1);
         disciplina1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina1.setForeground(new java.awt.Color(255, 255, 255));
         disciplina1.setText("Disciplina 1");
 
-        buttonGroup1.add(disciplina3);
+        buttonGroup1.add(disciplina2);
+        disciplina2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        disciplina2.setForeground(new java.awt.Color(255, 255, 255));
+        disciplina2.setText("Disciplina 2");
+
         disciplina3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina3.setForeground(new java.awt.Color(255, 255, 255));
         disciplina3.setText("Disciplina 3");
 
-        buttonGroup1.add(disciplina4);
         disciplina4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina4.setForeground(new java.awt.Color(255, 255, 255));
         disciplina4.setText("Disciplina 4");
 
-        buttonGroup1.add(disciplina5);
         disciplina5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina5.setForeground(new java.awt.Color(255, 255, 255));
         disciplina5.setText("Disciplina 5");
 
-        buttonGroup1.add(disciplina6);
         disciplina6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina6.setForeground(new java.awt.Color(255, 255, 255));
         disciplina6.setText("Disciplina 6");
 
-        buttonGroup1.add(disciplina7);
         disciplina7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina7.setForeground(new java.awt.Color(255, 255, 255));
         disciplina7.setText("Disciplina 7");
 
-        buttonGroup1.add(disciplina8);
         disciplina8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         disciplina8.setForeground(new java.awt.Color(255, 255, 255));
         disciplina8.setText("Disciplina 8");
@@ -88,11 +87,6 @@ public class MatricularDisc extends javax.swing.JFrame {
         botaoConfirmar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botaoConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         botaoConfirmar.setText("Confirmar");
-
-        buttonGroup1.add(disciplina2);
-        disciplina2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        disciplina2.setForeground(new java.awt.Color(255, 255, 255));
-        disciplina2.setText("Disciplina 2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,6 +155,7 @@ public class MatricularDisc extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

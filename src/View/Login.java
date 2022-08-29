@@ -51,17 +51,22 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.SystemColor.desktop);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
-        labelTitulo.setBackground(new java.awt.Color(200, 200, 200));
+        labelTitulo.setBackground(new java.awt.Color(0, 102, 255));
         labelTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText("Sistema acadêmico");
         labelTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelTitulo.setOpaque(true);
 
         labelUsuario.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
+        labelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario.setText("Usuário");
 
         labelSenha.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
+        labelSenha.setForeground(new java.awt.Color(255, 255, 255));
         labelSenha.setText("Senha");
 
         usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +76,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         botaoLogin.setBackground(new java.awt.Color(0, 62, 222));
-        botaoLogin.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        botaoLogin.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botaoLogin.setForeground(new java.awt.Color(255, 255, 255));
         botaoLogin.setText("Entrar");
         botaoLogin.setBorderPainted(false);
@@ -82,7 +87,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         botapSair.setBackground(new java.awt.Color(255, 0, 0));
-        botapSair.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        botapSair.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botapSair.setForeground(new java.awt.Color(255, 255, 255));
         botapSair.setText("Sair");
         botapSair.setBorderPainted(false);

@@ -32,7 +32,8 @@ public class AbrirPeriodo extends javax.swing.JFrame {
         fechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(848, 480));
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setResizable(false);
 
         jLabel1.setBackground(new java.awt.Color(0, 102, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -93,6 +94,7 @@ public class AbrirPeriodo extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
