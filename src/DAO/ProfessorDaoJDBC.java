@@ -1,6 +1,7 @@
 
-package ImplemDAO;
+package DAO;
 
+import DAO.DB;
 import Model.Professor;
 import DAO.ProfessorDAO;
 import java.sql.PreparedStatement;
