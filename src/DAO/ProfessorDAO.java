@@ -15,6 +15,10 @@ public interface ProfessorDAO {
     void update(Professor obj);
 		
     void deletePorNumR(Integer numR);
-
+    
+    boolean altenticarUsuarioDAO(Professor obj);
+    
+    boolean verificarAdm(Professor obj);
+    
     List<Professor> listarProf();      // Emcontrar tudo.
 }

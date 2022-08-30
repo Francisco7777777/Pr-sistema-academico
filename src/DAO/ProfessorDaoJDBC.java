@@ -127,4 +127,67 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
         return lista;
     }
 
+    @Override
+    public boolean altenticarUsuarioDAO(Professor obj) {
+        
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        
+        try {
+            //conn = Coneccao.getConnection();
+            
+            st = conn.prepareStatement("SELECT * FROM professor WHERE num_registro = ? AND senha = ?");
+            
+            obj.setAdiministrador(true);
+            st.setInt(1, obj.getNumRegistro());
+            st.setString(2, obj.getSenha());
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }      
+        } 
+        catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+            //DB.closeConnection();
+        }
+    }
+
+    @Override
+    public boolean verificarAdm(Professor obj) {
+        
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        
+        try {
+            //conn = Coneccao.getConnection();
+            
+            st = conn.prepareStatement("SELECT * FROM professor where num_registro = ? AND senha = ? AND adiministrador = 1");
+
+            st.setInt(1, obj.getNumRegistro());
+            st.setString(2, obj.getSenha());
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }      
+        } 
+        catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+            //DB.closeConnection();
+        }
+    }
+
 }

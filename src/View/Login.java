@@ -2,7 +2,9 @@
 package View;
 
 //import com.sun.jdi.connect.spi.Connection;
+import Controller.LoginController;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -12,6 +14,7 @@ import javax.swing.JTextField;
  */
 public class Login extends javax.swing.JFrame {
 
+    final private LoginController controller;
     /**
      * Creates new form Login
      */
@@ -20,6 +23,8 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Color fundo = new Color(245,245,245);
         getContentPane().setBackground(fundo);
+        
+        controller = new LoginController(this);
     }
 
     /**
@@ -85,6 +90,11 @@ public class Login extends javax.swing.JFrame {
         botaoSair.setForeground(new java.awt.Color(255, 255, 255));
         botaoSair.setText("Sair");
         botaoSair.setBorderPainted(false);
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,8 +165,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_usuarioActionPerformed
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
-        
+        controller.altenticarUsuarioController();
     }//GEN-LAST:event_botaoLoginActionPerformed
+
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+        controller.sairController();
+    }//GEN-LAST:event_botaoSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,6 +218,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 
+    
+    public void exibirMenssagem(String menssagem) {
+        JOptionPane.showMessageDialog(null, menssagem);
+    }
+    
     
     public JPasswordField getSenha() {
         return senha;

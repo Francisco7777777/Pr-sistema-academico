@@ -16,5 +16,7 @@ public interface AlunoDAO {
 		
     void deletePorNumR(Integer matricula);
 
+    boolean altenticarUsuarioDAO(Aluno obj);
+    
     List<Aluno> listarProf();      // Emcontrar tudo.
 }
