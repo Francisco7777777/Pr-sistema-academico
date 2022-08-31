@@ -28,39 +28,43 @@ public class LoginController {
     }
 
     public void altenticarUsuarioController() {
-        
-        // A variável usuari resebe da view o texto que estar no campo usuario.
-        Integer usuario = Integer.parseInt(view.getUsuario().getText());
-        String senha = String.valueOf(view.getSenha().getPassword());
-        
-        if (1 == verificarNivelDeAcesso(usuario)) {
-            Professor usuarioModelo = new Professor();
-            usuarioModelo.setNumRegistro(usuario);
-            usuarioModelo.setSenha(senha);
-            
-            if (professorDao.altenticarUsuarioDAO(usuarioModelo) && professorDao.verificarAdm(usuarioModelo)) {
-                Adm adiministrador = new Adm();        // Tela do adiministrador.
-                adiministrador.setVisible(true);       // Abrir tela.
-                this.view.dispose();                   // Fechar a tela anterior.
-            
-            } else if (professorDao.altenticarUsuarioDAO(usuarioModelo)) {
-                Prof professor = new Prof();
-                professor.setVisible(true);       // Abrir tela.
-                this.view.dispose();
-            } else {
-                alertaController("Usuario ou senha invalido!");
+        try {
+            // A variável usuari resebe da view o texto que estar no campo usuario.
+            Integer usuario = Integer.parseInt(view.getUsuario().getText());
+            String senha = String.valueOf(view.getSenha().getPassword());
+
+            if (1 == verificarNivelDeAcesso(usuario)) {
+                Professor usuarioModelo = new Professor();
+                usuarioModelo.setNumRegistro(usuario);
+                usuarioModelo.setSenha(senha);
+
+                if (professorDao.altenticarUsuarioDAO(usuarioModelo) && professorDao.verificarAdm(usuarioModelo)) {
+                    Adm adiministrador = new Adm();        // Tela do adiministrador.
+                    adiministrador.setVisible(true);       // Abrir tela.
+                    this.view.dispose();                   // Fechar a tela anterior.
+
+                } else if (professorDao.altenticarUsuarioDAO(usuarioModelo)) {
+                    Prof professor = new Prof();
+                    professor.setVisible(true);       // Abrir tela.
+                    this.view.dispose();
+                } else {
+                    alertaController("Usuario ou senha invalido!");
+                }
+            } 
+            if (2 == verificarNivelDeAcesso(usuario)) {
+                Aluno usuarioModelo = new Aluno();
+                usuarioModelo.setMatricula(usuario);
+                usuarioModelo.setSenha(senha);
+
+                if (alunoDao.altenticarUsuarioDAO(usuarioModelo)) {
+                    TeAluno aluno = new TeAluno();        // Tela do adiministrador.
+                    aluno.setVisible(true);           // Abrir tela.
+                    this.view.dispose();                   // Fechar a tela anterior.
+                }
             }
-        } 
-        if (2 == verificarNivelDeAcesso(usuario)) {
-            Aluno usuarioModelo = new Aluno();
-            usuarioModelo.setMatricula(usuario);
-            usuarioModelo.setSenha(senha);
-            
-            if (alunoDao.altenticarUsuarioDAO(usuarioModelo)) {
-                TeAluno aluno = new TeAluno();        // Tela do adiministrador.
-                aluno.setVisible(true);           // Abrir tela.
-                this.view.dispose();                   // Fechar a tela anterior.
-            }
+        } catch (NumberFormatException e) {
+            alertaController(" Usuário digitado incorretamente. Só é permitido "
+                    + "usuário com caracteres numéricos inteiros!");
         }
     }
     

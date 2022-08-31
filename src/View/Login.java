@@ -220,7 +220,7 @@ public class Login extends javax.swing.JFrame {
 
     
     public void exibirMenssagem(String menssagem) {
-        JOptionPane.showMessageDialog(null, menssagem);
+        JOptionPane.showMessageDialog(null, menssagem, "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
     }
     
     
