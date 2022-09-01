@@ -10,11 +10,13 @@ import java.util.List;
  */
 public interface AlunoDAO {
     
-    void insert(Aluno obj);
+    boolean insert(Aluno obj);
 		
-    void update(Aluno obj);
+    boolean update(Aluno obj);
 		
     void deletePorNumR(Integer matricula);
+    
+    Aluno selectPorNumR(Integer matricula);
 
     boolean altenticarUsuarioDAO(Aluno obj);
     

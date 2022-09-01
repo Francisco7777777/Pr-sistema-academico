@@ -52,7 +52,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
 
     
     @Override
-    public void update(Professor obj) {
+    public boolean update(Professor obj) {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement(
@@ -74,6 +74,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
         finally {
             DB.closeStatement(st);
         }
+        return true;
     }
 
     

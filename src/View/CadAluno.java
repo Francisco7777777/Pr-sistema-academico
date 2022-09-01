@@ -1,24 +1,25 @@
 
 package View;
 
-import DAO.DB;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Controller.CadastroAlunoController;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Evandro
  */
 public class CadAluno extends javax.swing.JFrame {
-
+    
+    final private CadastroAlunoController controller;
+    
     /**
      * Creates new form CadAluno
      */
     public CadAluno() {
         initComponents();
+        
+        controller = new CadastroAlunoController(this);
     }
 
     /**
@@ -36,14 +37,14 @@ public class CadAluno extends javax.swing.JFrame {
         labelEmail = new javax.swing.JLabel();
         labelSenha = new javax.swing.JLabel();
         matricula = new javax.swing.JTextField();
-        mail = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         senha = new javax.swing.JTextField();
-        enviar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bCadastrar = new javax.swing.JButton();
+        pesquisar = new javax.swing.JTextField();
+        bAlterar = new javax.swing.JButton();
+        bLimpar = new javax.swing.JButton();
+        bVoltar = new javax.swing.JButton();
+        bPesquisar = new javax.swing.JButton();
         labelMatricula = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
 
@@ -60,61 +61,81 @@ public class CadAluno extends javax.swing.JFrame {
         labelTitulo.setOpaque(true);
 
         labelNome.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelNome.setForeground(new java.awt.Color(255, 255, 255));
+        labelNome.setForeground(new java.awt.Color(0, 0, 0));
         labelNome.setText("Nome");
 
         labelEmail.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelEmail.setForeground(new java.awt.Color(255, 255, 255));
+        labelEmail.setForeground(new java.awt.Color(0, 0, 0));
         labelEmail.setText("E-mail");
 
         labelSenha.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelSenha.setForeground(new java.awt.Color(255, 255, 255));
+        labelSenha.setForeground(new java.awt.Color(0, 0, 0));
         labelSenha.setText("Senha");
 
         matricula.setForeground(new java.awt.Color(0, 0, 0));
 
-        mail.setForeground(new java.awt.Color(0, 0, 0));
+        email.setForeground(new java.awt.Color(0, 0, 0));
 
         senha.setForeground(new java.awt.Color(0, 0, 0));
 
-        enviar.setBackground(new java.awt.Color(0, 102, 255));
-        enviar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        enviar.setForeground(new java.awt.Color(255, 255, 255));
-        enviar.setText("Cadastrar");
-        enviar.addActionListener(new java.awt.event.ActionListener() {
+        bCadastrar.setBackground(new java.awt.Color(102, 204, 0));
+        bCadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        bCadastrar.setText("Cadastrar");
+        bCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enviarActionPerformed(evt);
+                bCadastrarActionPerformed(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                pesquisarActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(102, 204, 0));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Alterar");
+        bAlterar.setBackground(new java.awt.Color(0, 0, 255));
+        bAlterar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bAlterar.setForeground(new java.awt.Color(255, 255, 255));
+        bAlterar.setText("Alterar");
+        bAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAlterarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 0));
-        jButton2.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Limpar");
+        bLimpar.setBackground(new java.awt.Color(255, 153, 0));
+        bLimpar.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        bLimpar.setForeground(new java.awt.Color(255, 255, 255));
+        bLimpar.setText("Limpar");
+        bLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLimparActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(255, 153, 0));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Voltar");
+        bVoltar.setBackground(new java.awt.Color(255, 51, 51));
+        bVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        bVoltar.setText("Voltar");
+        bVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVoltarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Pesquisar");
+        bPesquisar.setBackground(new java.awt.Color(204, 204, 204));
+        bPesquisar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bPesquisar.setForeground(new java.awt.Color(0, 0, 0));
+        bPesquisar.setText("Pesquisar");
+        bPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPesquisarActionPerformed(evt);
+            }
+        });
 
         labelMatricula.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelMatricula.setForeground(new java.awt.Color(255, 255, 255));
+        labelMatricula.setForeground(new java.awt.Color(0, 0, 0));
         labelMatricula.setText("Matricula");
 
         nome.setForeground(new java.awt.Color(0, 0, 0));
@@ -129,9 +150,9 @@ public class CadAluno extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,17 +162,17 @@ public class CadAluno extends javax.swing.JFrame {
                                     .addGap(49, 49, 49)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(matricula)
-                                        .addComponent(mail)
+                                        .addComponent(email)
                                         .addComponent(senha)
                                         .addComponent(nome)))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(30, 30, 30)
-                                    .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(30, 30, 30)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(30, 30, 30)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(bVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(labelNome)))
@@ -170,7 +191,7 @@ public class CadAluno extends javax.swing.JFrame {
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelEmail))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -178,14 +199,14 @@ public class CadAluno extends javax.swing.JFrame {
                     .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -211,27 +232,33 @@ public class CadAluno extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
-        try {
-            Connection conn = new DB().getConnection();
-            
-            String sql = "insert into aluno(email, senha) values ('Evandro','123456'); ";
-            
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.execute();
-            
-            conn.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(CadAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-    }//GEN-LAST:event_enviarActionPerformed
+    private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
+        controller.cadastrarController();
+    }//GEN-LAST:event_bCadastrarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_pesquisarActionPerformed
+
+    private void bVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarActionPerformed
+        // TODO add your handling code here:
+        controller.voltarController();
+    }//GEN-LAST:event_bVoltarActionPerformed
+
+    private void bLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLimparActionPerformed
+        // TODO add your handling code here:
+        controller.limparCamposController();
+    }//GEN-LAST:event_bLimparActionPerformed
+
+    private void bPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesquisarActionPerformed
+        // TODO add your handling code here:
+        controller.pesquisarController();
+    }//GEN-LAST:event_bPesquisarActionPerformed
+
+    private void bAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAlterarActionPerformed
+        // TODO add your handling code here:
+        controller.alterarController();
+    }//GEN-LAST:event_bAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,21 +296,68 @@ public class CadAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton enviar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton bAlterar;
+    private javax.swing.JButton bCadastrar;
+    private javax.swing.JButton bLimpar;
+    private javax.swing.JButton bPesquisar;
+    private javax.swing.JButton bVoltar;
+    private javax.swing.JTextField email;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelMatricula;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JTextField mail;
     private javax.swing.JTextField matricula;
     private javax.swing.JTextField nome;
+    private javax.swing.JTextField pesquisar;
     private javax.swing.JTextField senha;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void exibirMenssagem(String menssagem) {
+        JOptionPane.showMessageDialog(null, menssagem, "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    
+    public JTextField getEmail() {
+        return email;
+    }
+
+    public void setEmail(JTextField email) {
+        this.email = email;
+    }
+
+    public JTextField getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(JTextField matricula) {
+        this.matricula = matricula;
+    }
+
+    public JTextField getNome() {
+        return nome;
+    }
+
+    public void setNome(JTextField nome) {
+        this.nome = nome;
+    }
+
+    public JTextField getPesquisar() {
+        return pesquisar;
+    }
+
+    public void setPesquisar(JTextField pesquisar) {
+        this.pesquisar = pesquisar;
+    }
+
+    public JTextField getSenha() {
+        return senha;
+    }
+
+    public void setSenha(JTextField senha) {
+        this.senha = senha;
+    }
+ 
 }

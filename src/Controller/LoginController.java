@@ -48,7 +48,7 @@ public class LoginController {
                     professor.setVisible(true);       // Abrir tela.
                     this.view.dispose();
                 } else {
-                    alertaController("Usuario ou senha invalido!");
+                    this.view.exibirMenssagem("Usuario ou senha invalido!");
                 }
             } 
             if (2 == verificarNivelDeAcesso(usuario)) {
@@ -63,24 +63,19 @@ public class LoginController {
                 }
             }
         } catch (NumberFormatException e) {
-            alertaController(" Usuário digitado incorretamente. Só é permitido "
+            this.view.exibirMenssagem(" Usuário digitado incorretamente. Só é permitido "
                     + "usuário com caracteres numéricos inteiros!");
         }
     }
     
     private int verificarNivelDeAcesso(int usuario) {
         int nivelDeAcesso = usuario < 100000000 ? 1 : 2;
-        System.err.println(usuario);
         return nivelDeAcesso;
     }
     
     public void limparTelaController() {
         view.getUsuario().setText("");
         view.getSenha().setText("");
-    }
-    
-    public void alertaController(String msg) {
-        this.view.exibirMenssagem(msg);
     }
 
     public void sairController() {

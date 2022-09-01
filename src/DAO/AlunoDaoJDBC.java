@@ -22,13 +22,53 @@ public class AlunoDaoJDBC implements AlunoDAO{
     
     
     @Override
-    public void insert(Aluno obj) {
+    public boolean insert(Aluno obj) {
         
+        PreparedStatement st = null;
+        
+        try {
+            st = conn.prepareStatement(
+                "INSERT INTO aluno (matricula, nome, email, senha)"
+                + " VALUES (?, ?, ?, ?)");
+
+            st.setInt(1, obj.getMatricula());
+            st.setString(2, obj.getNome());
+            st.setString(3, obj.getEmail());
+            st.setString(4, obj.getSenha());
+
+            int l = st.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace(); 
+        }
+        finally {
+            DB.closeStatement(st);
+        }
+        return true;
     }
 
     @Override
-    public void update(Aluno obj) {
+    public boolean update(Aluno obj) {
        
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(
+                "UPDATE aluno SET nome = ?, email = ?, senha = ? WHERE matricula = ?");
+
+            st.setString(1, obj.getNome());
+            st.setString(2, obj.getEmail());
+            st.setString(3, obj.getSenha());
+            st.setInt(4, obj.getMatricula());
+
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace(); 
+        }
+        finally {
+            DB.closeStatement(st);
+        }
+        return true;
     }
 
     @Override
@@ -62,10 +102,39 @@ public class AlunoDaoJDBC implements AlunoDAO{
         finally {
             DB.closeStatement(st);
             DB.closeResultSet(rs);
-            DB.closeConnection();
+            //DB.closeConnection();
         }
     }
 
+    @Override
+    public Aluno selectPorNumR(Integer matricula) {
+        
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Aluno aluno = new Aluno();
+        
+        try {
+            st = conn.prepareStatement("SELECT * FROM aluno WHERE matricula = ?");
+            st.setInt(1, matricula);
+            rs = st.executeQuery();
+            
+            while(rs.next()) {
+                aluno.setMatricula(rs.getInt(1));
+                aluno.setNome(rs.getString(2));
+                aluno.setEmail(rs.getString(3));
+                aluno.setSenha(rs.getString(4));
+            }
+        } 
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatement(st);
+            //DB.closeResultSet(rs);
+        }
+        return aluno;
+    }
+    
     @Override
     public List<Aluno> listarProf() {
         return null;

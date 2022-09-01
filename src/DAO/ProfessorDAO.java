@@ -12,7 +12,7 @@ public interface ProfessorDAO {
     
     void insert(Professor obj);
 		
-    void update(Professor obj);
+    boolean update(Professor obj);
 		
     void deletePorNumR(Integer numR);
     

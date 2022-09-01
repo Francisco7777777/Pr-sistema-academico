@@ -1,24 +1,30 @@
 
 package View;
 
+import Controller.CadastroProfessorController;
 import DAO.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Evandro
  */
 public class CadProf extends javax.swing.JFrame {
-
+    
+    final private CadastroProfessorController controller;
     /**
      * Creates new form CadAluno
      */
     public CadProf() {
         initComponents();
+        
+        controller = new CadastroProfessorController(this);
     }
 
     /**
@@ -30,7 +36,6 @@ public class CadProf extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         labelTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         labelNome = new javax.swing.JLabel();
@@ -38,18 +43,18 @@ public class CadProf extends javax.swing.JFrame {
         labelSenha = new javax.swing.JLabel();
         labelADM = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
-        mail = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         senha = new javax.swing.JTextField();
         sim = new javax.swing.JRadioButton();
         nao = new javax.swing.JRadioButton();
-        enviar = new javax.swing.JButton();
-        matricula = new javax.swing.JTextField();
+        bCadastrar = new javax.swing.JButton();
+        numRegistro = new javax.swing.JTextField();
         labelMatricula = new javax.swing.JLabel();
-        Limpar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bLimpar = new javax.swing.JButton();
+        bAlterar = new javax.swing.JButton();
+        pesquisar = new javax.swing.JTextField();
+        bPesquisar = new javax.swing.JButton();
+        bVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -63,24 +68,24 @@ public class CadProf extends javax.swing.JFrame {
         labelTitulo.setOpaque(true);
 
         labelNome.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelNome.setForeground(new java.awt.Color(255, 255, 255));
+        labelNome.setForeground(new java.awt.Color(0, 0, 0));
         labelNome.setText("Nome");
 
         labelEmail.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelEmail.setForeground(new java.awt.Color(255, 255, 255));
+        labelEmail.setForeground(new java.awt.Color(0, 0, 0));
         labelEmail.setText("E-mail");
 
         labelSenha.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelSenha.setForeground(new java.awt.Color(255, 255, 255));
+        labelSenha.setForeground(new java.awt.Color(0, 0, 0));
         labelSenha.setText("Senha");
 
         labelADM.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelADM.setForeground(new java.awt.Color(255, 255, 255));
+        labelADM.setForeground(new java.awt.Color(0, 0, 0));
         labelADM.setText("Professor é ADM");
 
         nome.setForeground(new java.awt.Color(0, 0, 0));
 
-        mail.setForeground(new java.awt.Color(0, 0, 0));
+        email.setForeground(new java.awt.Color(0, 0, 0));
 
         senha.setForeground(new java.awt.Color(0, 0, 0));
         senha.addActionListener(new java.awt.event.ActionListener() {
@@ -89,9 +94,8 @@ public class CadProf extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(sim);
         sim.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        sim.setForeground(new java.awt.Color(255, 255, 255));
+        sim.setForeground(new java.awt.Color(0, 0, 0));
         sim.setText("Sim");
         sim.setHideActionText(true);
         sim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -103,72 +107,81 @@ public class CadProf extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(nao);
         nao.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        nao.setForeground(new java.awt.Color(255, 255, 255));
+        nao.setForeground(new java.awt.Color(0, 0, 0));
         nao.setText("Não");
         nao.setBorderPainted(true);
         nao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         nao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nao.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         nao.setIconTextGap(10);
-
-        enviar.setBackground(new java.awt.Color(0, 102, 255));
-        enviar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        enviar.setForeground(new java.awt.Color(255, 255, 255));
-        enviar.setText("Cadastrar");
-        enviar.addActionListener(new java.awt.event.ActionListener() {
+        nao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enviarActionPerformed(evt);
+                naoActionPerformed(evt);
             }
         });
 
-        matricula.setForeground(new java.awt.Color(0, 0, 0));
-        matricula.addActionListener(new java.awt.event.ActionListener() {
+        bCadastrar.setBackground(new java.awt.Color(102, 204, 0));
+        bCadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        bCadastrar.setText("Cadastrar");
+        bCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matriculaActionPerformed(evt);
+                bCadastrarActionPerformed(evt);
+            }
+        });
+
+        numRegistro.setForeground(new java.awt.Color(0, 0, 0));
+        numRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numRegistroActionPerformed(evt);
             }
         });
 
         labelMatricula.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelMatricula.setForeground(new java.awt.Color(255, 255, 255));
+        labelMatricula.setForeground(new java.awt.Color(0, 0, 0));
         labelMatricula.setText("Num. do registro");
 
-        Limpar.setBackground(new java.awt.Color(204, 204, 0));
-        Limpar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Limpar.setForeground(new java.awt.Color(255, 255, 255));
-        Limpar.setText("Limpar");
-        Limpar.addActionListener(new java.awt.event.ActionListener() {
+        bLimpar.setBackground(new java.awt.Color(255, 153, 0));
+        bLimpar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bLimpar.setForeground(new java.awt.Color(255, 255, 255));
+        bLimpar.setText("Limpar");
+        bLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimparActionPerformed(evt);
+                bLimparActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(51, 204, 0));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Alterar");
+        bAlterar.setBackground(new java.awt.Color(0, 102, 255));
+        bAlterar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bAlterar.setForeground(new java.awt.Color(255, 255, 255));
+        bAlterar.setText("Alterar");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                pesquisarActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Pesquisar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bPesquisar.setBackground(new java.awt.Color(204, 204, 204));
+        bPesquisar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bPesquisar.setForeground(new java.awt.Color(0, 0, 0));
+        bPesquisar.setText("Pesquisar");
+        bPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bPesquisarActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 153, 0));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Voltar");
+        bVoltar.setBackground(new java.awt.Color(255, 51, 0));
+        bVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        bVoltar.setText("Voltar");
+        bVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -201,24 +214,24 @@ public class CadProf extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(labelEmail)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(labelMatricula)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(numRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(25, 25, 25)
-                                .addComponent(Limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(25, 25, 25)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(bPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -226,7 +239,7 @@ public class CadProf extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelMatricula))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -234,7 +247,7 @@ public class CadProf extends javax.swing.JFrame {
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelEmail))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -247,19 +260,19 @@ public class CadProf extends javax.swing.JFrame {
                     .addComponent(nao, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
-        Limpar.getAccessibleContext().setAccessibleName("Linpar");
-        Limpar.getAccessibleContext().setAccessibleParent(Limpar);
+        bLimpar.getAccessibleContext().setAccessibleName("Linpar");
+        bLimpar.getAccessibleContext().setAccessibleParent(bLimpar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -284,7 +297,7 @@ public class CadProf extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
+    private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
         try {
             Connection conn = new DB().getConnection();
             
@@ -300,31 +313,41 @@ public class CadProf extends javax.swing.JFrame {
         }
         
         
-    }//GEN-LAST:event_enviarActionPerformed
+    }//GEN-LAST:event_bCadastrarActionPerformed
 
     private void simActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_simActionPerformed
 
-    private void matriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculaActionPerformed
+    private void numRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numRegistroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matriculaActionPerformed
+    }//GEN-LAST:event_numRegistroActionPerformed
 
-    private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
+    private void bLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLimparActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LimparActionPerformed
+        controller.limparCamposController();
+    }//GEN-LAST:event_bLimparActionPerformed
 
     private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_pesquisarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bPesquisarActionPerformed
+
+    private void bVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarActionPerformed
+        // TODO add your handling code here:
+        controller.voltarController();
+    }//GEN-LAST:event_bVoltarActionPerformed
+
+    private void naoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_naoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,25 +386,82 @@ public class CadProf extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Limpar;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton enviar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bAlterar;
+    private javax.swing.JButton bCadastrar;
+    private javax.swing.JButton bLimpar;
+    private javax.swing.JButton bPesquisar;
+    private javax.swing.JButton bVoltar;
+    private javax.swing.JTextField email;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelADM;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelMatricula;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JTextField mail;
-    private javax.swing.JTextField matricula;
     private javax.swing.JRadioButton nao;
     private javax.swing.JTextField nome;
+    private javax.swing.JTextField numRegistro;
+    private javax.swing.JTextField pesquisar;
     private javax.swing.JTextField senha;
     private javax.swing.JRadioButton sim;
     // End of variables declaration//GEN-END:variables
+
+    
+    public JTextField getEmail() {
+        return email;
+    }
+
+    public void setEmail(JTextField email) {
+        this.email = email;
+    }
+
+    public JRadioButton getNao() {
+        return nao;
+    }
+
+    public void setNao(JRadioButton nao) {
+        this.nao = nao;
+    }
+
+    public JTextField getNome() {
+        return nome;
+    }
+
+    public void setNome(JTextField nome) {
+        this.nome = nome;
+    }
+
+    public JTextField getNumRegistro() {
+        return numRegistro;
+    }
+
+    public void setNumRegistro(JTextField numRegistro) {
+        this.numRegistro = numRegistro;
+    }
+
+    public JTextField getPesquisar() {
+        return pesquisar;
+    }
+
+    public void setPesquisar(JTextField pesquisar) {
+        this.pesquisar = pesquisar;
+    }
+
+    public JTextField getSenha() {
+        return senha;
+    }
+
+    public void setSenha(JTextField senha) {
+        this.senha = senha;
+    }
+
+    public JRadioButton getSim() {
+        return sim;
+    }
+
+    public void setSim(JRadioButton sim) {
+        this.sim = sim;
+    } 
+
 }

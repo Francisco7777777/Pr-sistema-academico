@@ -20,13 +20,13 @@ public class AdminController {
     public void telaCadastroProfessor() {
         CadProf cProfessor = new CadProf();
         cProfessor.setVisible(true);
-        //this.view.dispose();
+        this.view.dispose();
     }
 
     public void telaCadastroAluno() {
         CadAluno cAluno = new CadAluno();
         cAluno.setVisible(true);
-        //this.view.dispose();
+        this.view.dispose();
     }
     
 }

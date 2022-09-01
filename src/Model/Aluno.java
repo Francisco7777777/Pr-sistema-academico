@@ -21,5 +21,10 @@ public class Aluno extends Pessoa{
     public void setMatricula(Integer matricula) {
         this.matricula = matricula;
     }
+
+    @Override
+    public String toString() {
+        return "Aluno{ " + matricula + " " + this.nome + " " + this.email + " " + this.senha + '}';
+    }
     
 }
