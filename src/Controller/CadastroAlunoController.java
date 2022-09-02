@@ -31,16 +31,32 @@ public class CadastroAlunoController {
 
             Aluno aluno = new Aluno(matricula, nome, emal, senha);
 
-            if (alunoDao.insert(aluno)) {
-                this.view.exibirMenssagem("Aluno cadastrado com sucesso!");
-                limparCamposController();
+            if (alunoJaExiste(matricula)) {
+                System.out.println("null - verdadeiro");
+                if (alunoDao.insert(aluno)) {
+                    this.view.exibirMenssagem("Aluno cadastrado com sucesso!");
+                    limparCamposController();
+                } else {
+                    this.view.exibirMenssagem("Erro ao cadastrado aluno!");
+                }
             } else {
-                this.view.exibirMenssagem("Erro ao cadastrado aluno!");
+                this.view.exibirMenssagem("Já a um aluno cadastrado com essa matrícula: " + matricula);
             }
         } catch (NumberFormatException e){
-            this.view.exibirMenssagem(" Matricula digitada incorretamente. Só é "
+            this.view.exibirMenssagem("Matricula digitada incorretamente. Só é "
                     + "permitido matricula com caracteres numéricos inteiros!");
         }  
+    }
+    
+    private boolean alunoJaExiste(Integer matricula) {
+        Aluno aluno01 = new Aluno();
+        aluno01 = alunoDao.selectPorMatricula(matricula);
+        
+        if (aluno01.getMatricula() == null) {
+            System.out.println("null aqui");
+            return true;
+        }
+        return false;
     }
     
     public void pesquisarController() {
@@ -48,11 +64,12 @@ public class CadastroAlunoController {
         try {
             Integer pesquisar = Integer.parseInt(this.view.getPesquisar().getText());
             Aluno aluno = new Aluno();
-            aluno = alunoDao.selectPorNumR(pesquisar);
+            aluno = alunoDao.selectPorMatricula(pesquisar);
             
             if (aluno.getMatricula() == null) {
                 this.view.exibirMenssagem("Aluno com a matrícula: " + pesquisar + " não encontrado!");
             } else {
+                this.view.getMatricula().setEditable(false);
                 this.view.getMatricula().setText(String.valueOf(aluno.getMatricula()));
                 this.view.getNome().setText(aluno.getNome());
                 this.view.getEmail().setText(aluno.getEmail());
@@ -70,9 +87,11 @@ public class CadastroAlunoController {
         String nome = this.view.getNome().getText();
         String emal = this.view.getEmail().getText();
         String senha = this.view.getSenha().getText();
-
+        
         Aluno aluno = new Aluno(matricula, nome, emal, senha);
-        if (alunoDao.update(aluno)) {
+        
+        System.out.println("null - verdadeiro");
+        if(alunoDao.update(aluno)) {
             this.view.exibirMenssagem("Dados atualizados com sucesso!");
             limparCamposController();
         } else {
@@ -81,6 +100,8 @@ public class CadastroAlunoController {
     }
     
     public void limparCamposController() {
+        this.view.getMatricula().setEditable(true);
+        
         this.view.getMatricula().setText("");
         this.view.getNome().setText("");
         this.view.getEmail().setText("");

@@ -107,7 +107,7 @@ public class AlunoDaoJDBC implements AlunoDAO{
     }
 
     @Override
-    public Aluno selectPorNumR(Integer matricula) {
+    public Aluno selectPorMatricula(Integer matricula) {
         
         PreparedStatement st = null;
         ResultSet rs = null;
@@ -130,7 +130,7 @@ public class AlunoDaoJDBC implements AlunoDAO{
         }
         finally {
             DB.closeStatement(st);
-            //DB.closeResultSet(rs);
+            DB.closeResultSet(rs);
         }
         return aluno;
     }

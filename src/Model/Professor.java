@@ -8,13 +8,13 @@ package Model;
 public class Professor extends Pessoa{
     
     private Integer num_Registro;
-    private boolean adiministrador;
+    private Integer adiministrador;
 
     public Professor() {
         
     }
     
-    public Professor(Integer num_Registro, boolean adiministrador, String nome, String email, String senha) {
+    public Professor(Integer num_Registro, String nome, String email, String senha, Integer adiministrador) {
         super(nome, email, senha);
         this.num_Registro = num_Registro;
         this.adiministrador = adiministrador;
@@ -29,11 +29,11 @@ public class Professor extends Pessoa{
         this.num_Registro = num_Registro;
     }
 
-    public boolean getAdiministrador() {
+    public int getAdiministrador() {
         return adiministrador;
     }
 
-    public void setAdiministrador(boolean adiministrador) {
+    public void setAdiministrador(int adiministrador) {
         this.adiministrador = adiministrador;
     }
     

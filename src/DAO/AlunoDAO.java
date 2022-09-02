@@ -16,7 +16,7 @@ public interface AlunoDAO {
 		
     void deletePorNumR(Integer matricula);
     
-    Aluno selectPorNumR(Integer matricula);
+    Aluno selectPorMatricula(Integer matricula);
 
     boolean altenticarUsuarioDAO(Aluno obj);
     

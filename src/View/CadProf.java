@@ -2,12 +2,7 @@
 package View;
 
 import Controller.CadastroProfessorController;
-import DAO.DB;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -156,6 +151,11 @@ public class CadProf extends javax.swing.JFrame {
         bAlterar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         bAlterar.setForeground(new java.awt.Color(255, 255, 255));
         bAlterar.setText("Alterar");
+        bAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAlterarActionPerformed(evt);
+            }
+        });
 
         pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,21 +298,7 @@ public class CadProf extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
-        try {
-            Connection conn = new DB().getConnection();
-            
-            String sql = "insert into aluno(email, senha) values ('Evandro','123456'); ";
-            
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.execute();
-            
-            conn.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(CadProf.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
+        controller.cadastrarController();
     }//GEN-LAST:event_bCadastrarActionPerformed
 
     private void simActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simActionPerformed
@@ -338,6 +324,7 @@ public class CadProf extends javax.swing.JFrame {
 
     private void bPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesquisarActionPerformed
         // TODO add your handling code here:
+        controller.pesquisarController();
     }//GEN-LAST:event_bPesquisarActionPerformed
 
     private void bVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarActionPerformed
@@ -348,6 +335,11 @@ public class CadProf extends javax.swing.JFrame {
     private void naoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_naoActionPerformed
+
+    private void bAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAlterarActionPerformed
+        // TODO add your handling code here:
+        controller.alterarController();
+    }//GEN-LAST:event_bAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,6 +399,11 @@ public class CadProf extends javax.swing.JFrame {
     private javax.swing.JRadioButton sim;
     // End of variables declaration//GEN-END:variables
 
+    
+    public void exibirMenssagem(String menssagem) {
+        JOptionPane.showMessageDialog(null, menssagem, "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
     
     public JTextField getEmail() {
         return email;

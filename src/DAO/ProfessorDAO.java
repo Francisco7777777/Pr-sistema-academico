@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ProfessorDAO {
     
-    void insert(Professor obj);
+    boolean insert(Professor obj);
 		
     boolean update(Professor obj);
 		
@@ -19,6 +19,8 @@ public interface ProfessorDAO {
     boolean altenticarUsuarioDAO(Professor obj);
     
     boolean verificarAdm(Professor obj);
+    
+    Professor selectPorNumR(Integer numRegistro);
     
     List<Professor> listarProf();      // Emcontrar tudo.
 }

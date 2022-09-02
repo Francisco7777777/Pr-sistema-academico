@@ -25,7 +25,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
 
     
     @Override
-    public void insert(Professor obj) {
+    public boolean insert(Professor obj) {
         
         PreparedStatement st = null;
         
@@ -38,7 +38,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
             st.setString(2, obj.getNome());
             st.setString(3, obj.getEmail());
             st.setString(4, obj.getSenha());
-            st.setBoolean(5, obj.getAdiministrador());
+            st.setInt(5, obj.getAdiministrador());
 
             int l = st.executeUpdate();
 
@@ -48,6 +48,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
         finally {
             DB.closeStatement(st);
         }
+        return true;
     }
 
     
@@ -56,15 +57,14 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement(
-                "UPDATE professor SET num_registro = ?, nome = ?, email = ?, senha = ?,"
+                "UPDATE professor SET nome = ?, email = ?, senha = ?,"
                 + " adiministrador = ? WHERE num_registro = ?");
 
-            st.setInt(1, obj.getNumRegistro());
-            st.setString(2, obj.getNome());
-            st.setString(3, obj.getEmail());
-            st.setString(4, obj.getSenha());
-            st.setBoolean(5, obj.getAdiministrador());
-            st.setInt(6, obj.getNumRegistro());
+            st.setString(1, obj.getNome());
+            st.setString(2, obj.getEmail());
+            st.setString(3, obj.getSenha());
+            st.setInt(4, obj.getAdiministrador());
+            st.setInt(5, obj.getNumRegistro());
 
             st.executeUpdate();
 
@@ -113,7 +113,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
                 obj.setNome(rs.getString(2));
                 obj.setEmail(rs.getString(3));
                 obj.setSenha(rs.getString(4));
-                obj.setAdiministrador(rs.getBoolean(5));
+                obj.setAdiministrador(rs.getInt(5));
                 
                 lista.add(obj);
             }
@@ -139,7 +139,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
             
             st = conn.prepareStatement("SELECT * FROM professor WHERE num_registro = ? AND senha = ?");
             
-            obj.setAdiministrador(true);
+            obj.setAdiministrador(1);
             st.setInt(1, obj.getNumRegistro());
             st.setString(2, obj.getSenha());
             rs = st.executeQuery();
@@ -189,6 +189,35 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
             DB.closeResultSet(rs);
             //DB.closeConnection();
         }
+    }
+    
+    @Override
+    public Professor selectPorNumR(Integer numRegistro) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Professor professor = new Professor();
+        
+        try {
+            st = conn.prepareStatement("SELECT * FROM professor WHERE num_registro = ?");
+            st.setInt(1, numRegistro);
+            rs = st.executeQuery();
+            
+            while(rs.next()) {
+                professor.setNumRegistro(rs.getInt(1));
+                professor.setNome(rs.getString(2));
+                professor.setEmail(rs.getString(3));
+                professor.setSenha(rs.getString(4));
+                professor.setAdiministrador(rs.getInt(5));
+            }
+        } 
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
+        return professor;
     }
 
 }
