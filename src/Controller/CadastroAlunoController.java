@@ -13,8 +13,8 @@ import View.CadAluno;
  */
 public class CadastroAlunoController {
 
-    private final CadAluno view;
-    final private AlunoDAO alunoDao = FabricaDAO.criarProAlunoDao();
+    final private CadAluno view;
+    final private AlunoDAO alunoDao = FabricaDAO.criarAlunoDao();
 
     
     public CadastroAlunoController(CadAluno view) {
@@ -32,7 +32,6 @@ public class CadastroAlunoController {
             Aluno aluno = new Aluno(matricula, nome, emal, senha);
 
             if (alunoJaExiste(matricula)) {
-                System.out.println("null - verdadeiro");
                 if (alunoDao.insert(aluno)) {
                     this.view.exibirMenssagem("Aluno cadastrado com sucesso!");
                     limparCamposController();
@@ -40,7 +39,7 @@ public class CadastroAlunoController {
                     this.view.exibirMenssagem("Erro ao cadastrado aluno!");
                 }
             } else {
-                this.view.exibirMenssagem("Já a um aluno cadastrado com essa matrícula: " + matricula);
+                this.view.exibirMenssagem("Aluno já cadastrado com essa matrícula: " + matricula);
             }
         } catch (NumberFormatException e){
             this.view.exibirMenssagem("Matricula digitada incorretamente. Só é "

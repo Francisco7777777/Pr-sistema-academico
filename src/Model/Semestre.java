@@ -10,13 +10,13 @@ public class Semestre {
     private int id;
     private Date data_inicial;
     private Date data_final;
-    private boolean status;
+    private Integer status;
 
     public Semestre() {
         
     }
 
-    public Semestre(int id, Date data_inicial, Date data_final, boolean status) {
+    public Semestre(int id, Date data_inicial, Date data_final, Integer status) {
         this.id = id;
         this.data_inicial = data_inicial;
         this.data_final = data_final;
@@ -35,10 +35,6 @@ public class Semestre {
         return data_final;
     }
 
-    public boolean getStatus() {
-        return status;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -51,7 +47,11 @@ public class Semestre {
         this.data_final = data_final;
     }
 
-    public void setStatus(boolean status) {
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
         this.status = status;
     }
     

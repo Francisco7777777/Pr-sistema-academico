@@ -42,7 +42,7 @@ public class CadastroProfessorController {
                     this.view.exibirMenssagem("Erro ao cadastrado professor!");
                 }
             } else {
-                this.view.exibirMenssagem("Já a um aluno cadastrado com essa matrícula: " + numRegistro);
+                this.view.exibirMenssagem("Professor já cadastrado com essa matrícula: " + numRegistro);
             }
         } catch (NumberFormatException e){
             this.view.exibirMenssagem("Número de registro digitada incorretamente. Só é "

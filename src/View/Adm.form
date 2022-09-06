@@ -76,7 +76,7 @@
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="enceSeme" min="-2" pref="279" max="-2" attributes="0"/>
-                      <Component id="abrir" min="-2" pref="279" max="-2" attributes="0"/>
+                      <Component id="bPeriodoMatricula" min="-2" pref="279" max="-2" attributes="0"/>
                       <Component id="escolher" min="-2" pref="279" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -96,7 +96,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="abrir" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
+                              <Component id="bPeriodoMatricula" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
                               <Component id="notas" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -203,7 +203,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="abrir">
+        <Component class="javax.swing.JButton" name="bPeriodoMatricula">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="66" red="0" type="rgb"/>
@@ -214,10 +214,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Abrir per&#xed;odo de matricula"/>
+            <Property name="text" type="java.lang.String" value="Per&#xed;odo de matricula"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bPeriodoMatriculaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="enceSeme">
@@ -231,7 +231,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Encerrar semestre"/>
+            <Property name="text" type="java.lang.String" value="Semestre"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enceSemeActionPerformed"/>
@@ -265,7 +265,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Inserir/Alterar notas"/>
+            <Property name="text" type="java.lang.String" value="Notas"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="notasActionPerformed"/>

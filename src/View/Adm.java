@@ -34,7 +34,7 @@ public class Adm extends javax.swing.JFrame {
         labelCad = new javax.swing.JLabel();
         cadProf = new javax.swing.JButton();
         cadAluno = new javax.swing.JButton();
-        abrir = new javax.swing.JButton();
+        bPeriodoMatricula = new javax.swing.JButton();
         enceSeme = new javax.swing.JButton();
         escolher = new javax.swing.JButton();
         notas = new javax.swing.JButton();
@@ -103,20 +103,20 @@ public class Adm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        abrir.setBackground(new java.awt.Color(0, 102, 255));
-        abrir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        abrir.setForeground(new java.awt.Color(255, 255, 255));
-        abrir.setText("Abrir período de matricula");
-        abrir.addActionListener(new java.awt.event.ActionListener() {
+        bPeriodoMatricula.setBackground(new java.awt.Color(0, 102, 255));
+        bPeriodoMatricula.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        bPeriodoMatricula.setForeground(new java.awt.Color(255, 255, 255));
+        bPeriodoMatricula.setText("Período de matricula");
+        bPeriodoMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirActionPerformed(evt);
+                bPeriodoMatriculaActionPerformed(evt);
             }
         });
 
         enceSeme.setBackground(new java.awt.Color(0, 102, 255));
         enceSeme.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         enceSeme.setForeground(new java.awt.Color(255, 255, 255));
-        enceSeme.setText("Encerrar semestre");
+        enceSeme.setText("Semestre");
         enceSeme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enceSemeActionPerformed(evt);
@@ -136,7 +136,7 @@ public class Adm extends javax.swing.JFrame {
         notas.setBackground(new java.awt.Color(0, 102, 255));
         notas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         notas.setForeground(new java.awt.Color(255, 255, 255));
-        notas.setText("Inserir/Alterar notas");
+        notas.setText("Notas");
         notas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 notasActionPerformed(evt);
@@ -173,7 +173,7 @@ public class Adm extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(enceSeme, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(abrir, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bPeriodoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(escolher, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +189,7 @@ public class Adm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(abrir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bPeriodoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(notas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(enceSeme, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,13 +238,9 @@ public class Adm extends javax.swing.JFrame {
         controller.telaCadastroAluno();
     }//GEN-LAST:event_cadAlunoActionPerformed
 
-    private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_abrirActionPerformed
-
-    private void enceSemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enceSemeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_enceSemeActionPerformed
+    private void bPeriodoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPeriodoMatriculaActionPerformed
+        controller.telaPeriodoMatricula();
+    }//GEN-LAST:event_bPeriodoMatriculaActionPerformed
 
     private void escolherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolherActionPerformed
         // TODO add your handling code here:
@@ -261,6 +257,11 @@ public class Adm extends javax.swing.JFrame {
     private void horarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_horarioActionPerformed
+
+    private void enceSemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enceSemeActionPerformed
+        // TODO add your handling code here:
+        controller.telaSemestre();
+    }//GEN-LAST:event_enceSemeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,7 +300,7 @@ public class Adm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton abrir;
+    private javax.swing.JButton bPeriodoMatricula;
     private javax.swing.JButton cadAluno;
     private javax.swing.JButton cadProf;
     private javax.swing.JButton enceDisc;

@@ -51,7 +51,7 @@ public class CadProf extends javax.swing.JFrame {
         bPesquisar = new javax.swing.JButton();
         bVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setResizable(false);
 

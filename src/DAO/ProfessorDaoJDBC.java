@@ -98,7 +98,7 @@ public class ProfessorDaoJDBC implements ProfessorDAO{
 
     
     @Override
-    public List<Professor> listarProf() {
+    public List<Professor> listarProfessor() {
         PreparedStatement st = null;
         ResultSet rs = null;
         List<Professor> lista = new ArrayList<>();

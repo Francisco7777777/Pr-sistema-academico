@@ -22,5 +22,5 @@ public interface ProfessorDAO {
     
     Professor selectPorNumR(Integer numRegistro);
     
-    List<Professor> listarProf();      // Emcontrar tudo.
+    List<Professor> listarProfessor();      // Emcontrar tudo.
 }

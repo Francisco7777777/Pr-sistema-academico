@@ -4,6 +4,8 @@ package Controller;
 import View.Adm;
 import View.CadAluno;
 import View.CadProf;
+import View.PeriodoMatriculaView;
+import View.SemestreView;
 
 /**
  *
@@ -27,6 +29,18 @@ public class AdminController {
         CadAluno cAluno = new CadAluno();
         cAluno.setVisible(true);
         this.view.dispose();
+    }
+
+    public void telaPeriodoMatricula() {
+        PeriodoMatriculaView periodoMatricula = new PeriodoMatriculaView();
+        periodoMatricula.setVisible(true);
+        this.view.dispose();
+    }
+
+    public void telaSemestre() {
+       SemestreView semestre = new SemestreView();
+       semestre.setVisible(true);
+       this.view.dispose();
     }
     
 }

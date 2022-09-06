@@ -10,11 +10,13 @@ import java.util.List;
  */
 public interface SemestreDAO {
     
-    void insert(Semestre obj);
+    public void insert(Semestre obj);
 		
-    void update(Semestre obj);
+    public void update(Semestre obj);
 		
-    void deletePorNumR(Integer id);
+    //public void deletePorNumR(Integer id);
 
-    List<Semestre> listarProf();      // Emcontrar tudo.
+    public Semestre selecionarPorId(Integer id);
+    
+    public List<Semestre> listarSemestre();
 }

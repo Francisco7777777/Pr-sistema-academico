@@ -20,7 +20,7 @@ public class LoginController {
     // Assim a viw login será acessivel de qualquer ponto dessa classe.
     final private Login view;
     final private ProfessorDAO professorDao = FabricaDAO.criarProfessorDao();
-    final private AlunoDAO alunoDao = FabricaDAO.criarProAlunoDao();
+    final private AlunoDAO alunoDao = FabricaDAO.criarAlunoDao();
 
     // Para que esse controller seja criado ele pressisa receber a tela.
     public LoginController(Login view) {
