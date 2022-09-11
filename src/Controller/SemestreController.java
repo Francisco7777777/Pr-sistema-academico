@@ -30,7 +30,7 @@ public class SemestreController {
         this.view = view;
     }
 
-    public void cadastrarSeController() {
+    public void cadastrarController() {
 
         String sdInicial = view.getDataInicial().getText();
         String sdFinal = view.getDataFinal().getText();
@@ -46,12 +46,18 @@ public class SemestreController {
             semestre.setData_final(data_fnl);
             
             Integer status = view.getStatus().getSelectedIndex();
+            Integer perMatProf = view.getPerMatProf().getSelectedIndex();
+            Integer perMatAluno = view.getPerMatAluno().getSelectedIndex();
+            
+            semestre.setPeriodoMatriculaProfessor(perMatProf);
+            semestre.setPeriodoMatriculaAluno(perMatAluno);
             semestre.setStatus(status);
             
-        } catch (ParseException ex) {
+            semestreDao.insert(semestre);
+        } 
+        catch (ParseException ex) {
             Logger.getLogger(SemestreController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        semestreDao.insert(semestre);
     }
     
     public void alterarController() {
@@ -62,15 +68,20 @@ public class SemestreController {
         Semestre semestre = new Semestre();
         
         try {
+            semestre.setId(Integer.parseInt(view.getId().getText()));
             data_ini = (sdf.parse(sdInicial));
             data_fnl = (sdf.parse(sdFinal));
+            Integer perMatProf = view.getPerMatProf().getSelectedIndex();
+            Integer perMatAluno = view.getPerMatAluno().getSelectedIndex();
             
-            semestre.setId(Integer.parseInt(view.getId().getText()));
             semestre.setData_inicial(data_ini);
             semestre.setData_final(data_fnl);
+            semestre.setPeriodoMatriculaProfessor(perMatProf);
+            semestre.setPeriodoMatriculaAluno(perMatAluno);
             Integer status = view.getStatus().getSelectedIndex();
             
             semestre.setStatus(status);
+            
         } catch (ParseException ex) {
             Logger.getLogger(SemestreController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -87,6 +98,8 @@ public class SemestreController {
                 semestre.get(i).getId(),
                 semestre.get(i).getData_inicial(),
                 semestre.get(i).getData_final(),
+                semestre.get(i).getPeriodoMatriculaProfessor(),
+                semestre.get(i).getPeriodoMatriculaAluno(),
                 semestre.get(i).getStatus()
             });
         }
@@ -103,6 +116,8 @@ public class SemestreController {
         this.view.getId().setText(String.valueOf(semestre01.getId()));
         this.view.getDataInicial().setText(sdf.format(semestre01.getData_inicial()));
         this.view.getDataFinal().setText(sdf.format(semestre01.getData_final()));
+        this.view.getPerMatProf().setSelectedIndex(semestre01.getPeriodoMatriculaProfessor());
+        this.view.getPerMatAluno().setSelectedIndex(semestre01.getPeriodoMatriculaAluno());
         this.view.getStatus().setSelectedIndex(semestre01.getStatus());
     }
     

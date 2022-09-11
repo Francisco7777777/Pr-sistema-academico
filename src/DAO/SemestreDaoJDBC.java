@@ -30,11 +30,14 @@ public class SemestreDaoJDBC implements SemestreDAO{
         try {
             st = conn.prepareStatement(
                 
-                "INSERT INTO semestre (data_inicil, data_final, status)"
-                + " VALUES ('" + sdf.format(obj.getData_inicial()) + "','" + 
-                    sdf.format(obj.getData_final()) + "', ?)");
+                "INSERT INTO semestre (data_inicil, data_final, periodo_matricula_professor,"
+                    + " periodo_matricula_aluno, status)"
+                    + " VALUES ('" + sdf.format(obj.getData_inicial()) + "','" + 
+                    sdf.format(obj.getData_final()) + "', ?, ?, ?)");
             
-            st.setInt(1, obj.getStatus());
+            st.setInt(1, obj.getPeriodoMatriculaProfessor());
+            st.setInt(2, obj.getPeriodoMatriculaAluno());
+            st.setInt(3, obj.getStatus());
 
             int l = st.executeUpdate();
 
@@ -54,10 +57,13 @@ public class SemestreDaoJDBC implements SemestreDAO{
                 "UPDATE semestre SET "
                     + "data_inicil = '" +sdf.format(obj.getData_inicial())+ "', "
                     + "data_final = '" +sdf.format(obj.getData_final())+ "', "
+                    + "periodo_matricula_professor = ?, periodo_matricula_aluno = ?, "
                     + "status = ? WHERE id = ?");
             
-            st.setInt(1, obj.getStatus());
-            st.setInt(2, obj.getId());
+            st.setInt(1, obj.getPeriodoMatriculaProfessor());
+            st.setInt(2, obj.getPeriodoMatriculaAluno());
+            st.setInt(3, obj.getStatus());
+            st.setInt(4, obj.getId());
             
             st.executeUpdate();
 
@@ -84,7 +90,9 @@ public class SemestreDaoJDBC implements SemestreDAO{
                 semestre.setId(rs.getInt(1));
                 semestre.setData_inicial(rs.getDate(2));
                 semestre.setData_final(rs.getDate(3));
-                semestre.setStatus(rs.getInt(4));
+                semestre.setPeriodoMatriculaProfessor(rs.getInt(4));
+                semestre.setPeriodoMatriculaAluno(rs.getInt(5));
+                semestre.setStatus(rs.getInt(6));
             }
         } 
         catch (SQLException e) {
@@ -112,7 +120,9 @@ public class SemestreDaoJDBC implements SemestreDAO{
                 obj.setId(rs.getInt(1));
                 obj.setData_inicial(rs.getDate(2));
                 obj.setData_final(rs.getDate(3));
-                obj.setStatus(rs.getInt(4));
+                obj.setPeriodoMatriculaProfessor(rs.getInt(4));
+                obj.setPeriodoMatriculaAluno(rs.getInt(5));
+                obj.setStatus(rs.getInt(6));
                 
                 lista.add(obj);
             }

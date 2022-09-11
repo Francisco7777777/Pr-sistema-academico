@@ -10,19 +10,25 @@ public class Semestre {
     private int id;
     private Date data_inicial;
     private Date data_final;
+    private Integer periodoMatriculaProfessor;
+    private Integer periodoMatriculaAluno;
     private Integer status;
 
+    
     public Semestre() {
         
     }
 
-    public Semestre(int id, Date data_inicial, Date data_final, Integer status) {
+    public Semestre(int id, Date data_inicial, Date data_final, Integer periodoMatriculaProfessor, Integer periodoMatriculaAluno, Integer status) {
         this.id = id;
         this.data_inicial = data_inicial;
         this.data_final = data_final;
+        this.periodoMatriculaProfessor = periodoMatriculaProfessor;
+        this.periodoMatriculaAluno = periodoMatriculaAluno;
         this.status = status;
     }
 
+    
     public int getId() {
         return id;
     }
@@ -54,5 +60,21 @@ public class Semestre {
     public void setStatus(Integer status) {
         this.status = status;
     }
-    
+
+    public Integer getPeriodoMatriculaProfessor() {
+        return periodoMatriculaProfessor;
+    }
+
+    public void setPeriodoMatriculaProfessor(Integer periodoMatriculaProfessor) {
+        this.periodoMatriculaProfessor = periodoMatriculaProfessor;
+    }
+
+    public Integer getPeriodoMatriculaAluno() {
+        return periodoMatriculaAluno;
+    }
+
+    public void setPeriodoMatriculaAluno(Integer periodoMatriculaAluno) {
+        this.periodoMatriculaAluno = periodoMatriculaAluno;
+    }
+      
 }

@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface PeriodoMatriculaDAO {
     
-    boolean insert(PeriodoMatricula obj);
+    public boolean insert(PeriodoMatricula obj);
     
-    void update(PeriodoMatricula obj);
+    public void update(PeriodoMatricula obj);
     
-    List<PeriodoMatricula> listarPeriodoMatricula();
+    public List<PeriodoMatricula> listarPeriodoMatricula();
 }

@@ -36,14 +36,16 @@ public class PeriodoMatriculaView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        abrir = new javax.swing.JButton();
+        cadastrar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtTabelaPerMat = new javax.swing.JTable();
-        jcPeriodo = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jcStatus = new javax.swing.JComboBox<>();
+        TabelaPerMat = new javax.swing.JTable();
+        professorStatus = new javax.swing.JComboBox<>();
+        voltar = new javax.swing.JButton();
+        alunoStatus = new javax.swing.JComboBox<>();
         chaveSemestre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -57,13 +59,13 @@ public class PeriodoMatriculaView extends javax.swing.JFrame {
         jLabel1.setOpaque(true);
         jLabel1.setPreferredSize(new java.awt.Dimension(227, 32));
 
-        abrir.setBackground(new java.awt.Color(51, 204, 0));
-        abrir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        abrir.setForeground(new java.awt.Color(255, 255, 255));
-        abrir.setText("Incerir");
-        abrir.addActionListener(new java.awt.event.ActionListener() {
+        cadastrar.setBackground(new java.awt.Color(51, 204, 0));
+        cadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        cadastrar.setText("Cadastrar");
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirActionPerformed(evt);
+                cadastrarActionPerformed(evt);
             }
         });
 
@@ -77,7 +79,7 @@ public class PeriodoMatriculaView extends javax.swing.JFrame {
             }
         });
 
-        jtTabelaPerMat.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaPerMat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -88,33 +90,33 @@ public class PeriodoMatriculaView extends javax.swing.JFrame {
                 "ID", "Período_professor", "Período_aluno", "ID_semestre"
             }
         ));
-        jScrollPane1.setViewportView(jtTabelaPerMat);
+        jScrollPane1.setViewportView(TabelaPerMat);
 
-        jcPeriodo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jcPeriodo.setForeground(new java.awt.Color(0, 0, 0));
-        jcPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Aluno" }));
-        jcPeriodo.addActionListener(new java.awt.event.ActionListener() {
+        professorStatus.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        professorStatus.setForeground(new java.awt.Color(0, 0, 0));
+        professorStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fechar", "Abrir" }));
+        professorStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcPeriodoActionPerformed(evt);
+                professorStatusActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 51));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        voltar.setBackground(new java.awt.Color(255, 0, 51));
+        voltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        voltar.setForeground(new java.awt.Color(255, 255, 255));
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                voltarActionPerformed(evt);
             }
         });
 
-        jcStatus.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jcStatus.setForeground(new java.awt.Color(0, 0, 0));
-        jcStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Abrir", "Fechar" }));
-        jcStatus.addActionListener(new java.awt.event.ActionListener() {
+        alunoStatus.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        alunoStatus.setForeground(new java.awt.Color(0, 0, 0));
+        alunoStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fechar", "Abrir" }));
+        alunoStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcStatusActionPerformed(evt);
+                alunoStatusActionPerformed(evt);
             }
         });
 
@@ -124,49 +126,62 @@ public class PeriodoMatriculaView extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Professor");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Aluno");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chaveSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(professorStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(alunoStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(abrir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(120, 120, 120)
-                                .addComponent(alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(30, 30, 30))))
+                        .addComponent(chaveSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jcPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(chaveSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(professorStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(alunoStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(abrir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chaveSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -174,49 +189,45 @@ public class PeriodoMatriculaView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
-        
-        int item = jcPeriodo.getSelectedIndex();
-        if (item == 0) {
-            controller.cadastrarController();
-            controller.getListarPeriodoMatriculaController();
-        }
-    }//GEN-LAST:event_abrirActionPerformed
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+
+        controller.cadastrarController();
+        controller.getListarPeriodoMatriculaController();
+    }//GEN-LAST:event_cadastrarActionPerformed
 
     private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
         // TODO add your handling code here:
         controller.alterarController();
+        controller.getListarPeriodoMatriculaController();
+        
     }//GEN-LAST:event_alterarActionPerformed
 
-    private void jcPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcPeriodoActionPerformed
+    private void professorStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorStatusActionPerformed
         
-    }//GEN-LAST:event_jcPeriodoActionPerformed
+    }//GEN-LAST:event_professorStatusActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
         controller.voltarController();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_voltarActionPerformed
 
-    private void jcStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcStatusActionPerformed
+    private void alunoStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alunoStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcStatusActionPerformed
+    }//GEN-LAST:event_alunoStatusActionPerformed
 
     private void chaveSemestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chaveSemestreActionPerformed
         // TODO add your handling code here:
@@ -273,56 +284,48 @@ public class PeriodoMatriculaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton abrir;
+    private javax.swing.JTable TabelaPerMat;
     private javax.swing.JButton alterar;
+    private javax.swing.JComboBox<String> alunoStatus;
+    private javax.swing.JButton cadastrar;
     private javax.swing.JTextField chaveSemestre;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcPeriodo;
-    private javax.swing.JComboBox<String> jcStatus;
-    private javax.swing.JTable jtTabelaPerMat;
+    private javax.swing.JComboBox<String> professorStatus;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 
     
     public void exibirMenssagem(String menssagem) {
         JOptionPane.showMessageDialog(null, menssagem, "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
     }
-    
-    
-    public JButton getAbrir() {
-        return abrir;
+
+    public JTable getTabelaPerMat() {
+        return TabelaPerMat;
     }
 
-    public void setAbrir(JButton abrir) {
-        this.abrir = abrir;
+    public void setTabelaPerMat(JTable TabelaPerMat) {
+        this.TabelaPerMat = TabelaPerMat;
     }
 
-    public JButton getFechar() {
-        return alterar;
+    public JComboBox<String> getAlunoStatus() {
+        return alunoStatus;
     }
 
-    public void setFechar(JButton fechar) {
-        this.alterar = fechar;
+    public void setAlunoStatus(JComboBox<String> alunoStatus) {
+        this.alunoStatus = alunoStatus;
     }
 
-    public JTable getJtTabelaPerMat() {
-        return jtTabelaPerMat;
+    public JComboBox<String> getProfessorStatus() {
+        return professorStatus;
     }
 
-    public void setJtTabelaPerMat(JTable jtTabelaPerMat) {
-        this.jtTabelaPerMat = jtTabelaPerMat;
+    public void setProfessorStatus(JComboBox<String> professorStatus) {
+        this.professorStatus = professorStatus;
     }
-
-    public JComboBox<String> getJcPeriodo() {
-        return jcPeriodo;
-    }
-
-    public void setJcPeriodo(JComboBox<String> jcPeriodo) {
-        this.jcPeriodo = jcPeriodo;
-    }
-    
     
 }
 

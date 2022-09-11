@@ -15,7 +15,7 @@ public class DB {
     // Objeto que sera o objeto de conecção com banco de dados do jdbc.
     private static Connection conn = null;
     
-    static final String BD_URL = "jdbc:mysql://localhost:3306/dados_academico";
+    static final String BD_URL = "jdbc:mysql://localhost:3306/dados_academico02";
     static final String USER = "root";
     static final String PASS = "nincarl7";
     

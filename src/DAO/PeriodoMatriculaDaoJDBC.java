@@ -51,7 +51,7 @@ public class PeriodoMatriculaDaoJDBC implements PeriodoMatriculaDAO{
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement(
-                "UPDATE periodo_matricula SET professor_status = ?, aluno_status = ?, WHERE id = ?");
+                "UPDATE periodo_matricula SET professor_status = ?, aluno_status = ? WHERE id = ?");
             
             st.setInt(1, obj.getProfessorStatus());
             st.setInt(2, obj.getAlunoStatus());
@@ -82,7 +82,7 @@ public class PeriodoMatriculaDaoJDBC implements PeriodoMatriculaDAO{
                 obj.setId(rs.getInt(1));
                 obj.setProfessorStatus(rs.getInt(2));
                 obj.setAlunoStatus(rs.getInt(3));
-                obj.setSemetre((Semestre) rs.getObject(4));
+                //obj.setSemetre(rs.getInt(0));                < == Aqui o Erro
                 
                 lista.add(obj);
             }

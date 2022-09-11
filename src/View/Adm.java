@@ -28,240 +28,130 @@ public class Adm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelTitulo = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        labelCad = new javax.swing.JLabel();
-        cadProf = new javax.swing.JButton();
-        cadAluno = new javax.swing.JButton();
-        bPeriodoMatricula = new javax.swing.JButton();
-        enceSeme = new javax.swing.JButton();
-        escolher = new javax.swing.JButton();
-        notas = new javax.swing.JButton();
-        enceDisc = new javax.swing.JButton();
-        horario = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
+        painel = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        cadastroProfessor = new javax.swing.JMenuItem();
+        cadastroAluno = new javax.swing.JMenuItem();
+        semestre = new javax.swing.JMenuItem();
+        matricula = new javax.swing.JMenuItem();
+        notas = new javax.swing.JMenu();
+        disciplina = new javax.swing.JMenuItem();
+        horario = new javax.swing.JMenuItem();
+        Notas = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        sair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelTitulo.setBackground(new java.awt.Color(0, 102, 255));
-        labelTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTitulo.setText("Sistema Acadêmico");
-        labelTitulo.setOpaque(true);
+        Titulo.setBackground(new java.awt.Color(0, 102, 255));
+        Titulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Titulo.setText("Sistema Acadêmico");
+        Titulo.setOpaque(true);
+        getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 43));
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(1110, 275));
+        painel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/painel.jpg"))); // NOI18N
+        getContentPane().add(painel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 39, 800, 510));
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu1.setText("Administrador");
 
-        labelCad.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelCad.setForeground(new java.awt.Color(255, 255, 255));
-        labelCad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelCad.setText("Cadastrar");
-
-        cadProf.setBackground(new java.awt.Color(0, 102, 255));
-        cadProf.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        cadProf.setForeground(new java.awt.Color(255, 255, 255));
-        cadProf.setText("Professor");
-        cadProf.addActionListener(new java.awt.event.ActionListener() {
+        cadastroProfessor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cadastroProfessor.setText("Cadastrar Professor");
+        cadastroProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadProfActionPerformed(evt);
+                cadastroProfessorActionPerformed(evt);
             }
         });
+        jMenu1.add(cadastroProfessor);
 
-        cadAluno.setBackground(new java.awt.Color(0, 102, 255));
-        cadAluno.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        cadAluno.setForeground(new java.awt.Color(255, 255, 255));
-        cadAluno.setText("Aluno");
-        cadAluno.addActionListener(new java.awt.event.ActionListener() {
+        cadastroAluno.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cadastroAluno.setText("Cadastrar Aluno");
+        cadastroAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadAlunoActionPerformed(evt);
+                cadastroAlunoActionPerformed(evt);
             }
         });
+        jMenu1.add(cadastroAluno);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelCad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cadProf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cadAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(labelCad, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(cadProf, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cadAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        bPeriodoMatricula.setBackground(new java.awt.Color(0, 102, 255));
-        bPeriodoMatricula.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        bPeriodoMatricula.setForeground(new java.awt.Color(255, 255, 255));
-        bPeriodoMatricula.setText("Período de matricula");
-        bPeriodoMatricula.addActionListener(new java.awt.event.ActionListener() {
+        semestre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        semestre.setText("Semestre ");
+        semestre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bPeriodoMatriculaActionPerformed(evt);
+                semestreActionPerformed(evt);
             }
         });
+        jMenu1.add(semestre);
 
-        enceSeme.setBackground(new java.awt.Color(0, 102, 255));
-        enceSeme.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        enceSeme.setForeground(new java.awt.Color(255, 255, 255));
-        enceSeme.setText("Semestre");
-        enceSeme.addActionListener(new java.awt.event.ActionListener() {
+        matricula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        matricula.setText("Matricula");
+        jMenu1.add(matricula);
+
+        jMenuBar1.add(jMenu1);
+
+        notas.setText("Professor");
+
+        disciplina.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        disciplina.setText("Disciplina");
+        disciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enceSemeActionPerformed(evt);
+                disciplinaActionPerformed(evt);
             }
         });
+        notas.add(disciplina);
 
-        escolher.setBackground(new java.awt.Color(0, 102, 255));
-        escolher.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        escolher.setForeground(new java.awt.Color(255, 255, 255));
-        escolher.setText("Escolher disciplinas");
-        escolher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                escolherActionPerformed(evt);
-            }
-        });
-
-        notas.setBackground(new java.awt.Color(0, 102, 255));
-        notas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        notas.setForeground(new java.awt.Color(255, 255, 255));
-        notas.setText("Notas");
-        notas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                notasActionPerformed(evt);
-            }
-        });
-
-        enceDisc.setBackground(new java.awt.Color(0, 102, 255));
-        enceDisc.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        enceDisc.setForeground(new java.awt.Color(255, 255, 255));
-        enceDisc.setText("Encerrar disciplina");
-        enceDisc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enceDiscActionPerformed(evt);
-            }
-        });
-
-        horario.setBackground(new java.awt.Color(0, 102, 255));
-        horario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        horario.setForeground(new java.awt.Color(255, 255, 255));
+        horario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         horario.setText("Horário");
-        horario.addActionListener(new java.awt.event.ActionListener() {
+        notas.add(horario);
+
+        Notas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Notas.setText("Notas");
+        notas.add(Notas);
+
+        jMenuBar1.add(notas);
+
+        jMenu3.setText("Mais");
+
+        sair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        sair.setText("Sair");
+        sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                horarioActionPerformed(evt);
+                sairActionPerformed(evt);
             }
         });
+        jMenu3.add(sair);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(enceSeme, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bPeriodoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(escolher, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(enceDisc, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(horario, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(notas, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bPeriodoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(notas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(enceSeme, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(escolher, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(93, 93, 93)
-                            .addComponent(enceDisc, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(horario, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jMenuBar1.add(jMenu3);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
-        );
+        setJMenuBar(jMenuBar1);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cadProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadProfActionPerformed
+    private void disciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplinaActionPerformed
         // TODO add your handling code here:
-        controller.telaCadastroProfessor();
-    }//GEN-LAST:event_cadProfActionPerformed
+    }//GEN-LAST:event_disciplinaActionPerformed
 
-    private void cadAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadAlunoActionPerformed
-        // TODO add your handling code here:
+    private void cadastroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroAlunoActionPerformed
         controller.telaCadastroAluno();
-    }//GEN-LAST:event_cadAlunoActionPerformed
+    }//GEN-LAST:event_cadastroAlunoActionPerformed
 
-    private void bPeriodoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPeriodoMatriculaActionPerformed
-        controller.telaPeriodoMatricula();
-    }//GEN-LAST:event_bPeriodoMatriculaActionPerformed
+    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_sairActionPerformed
 
-    private void escolherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolherActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_escolherActionPerformed
+    private void cadastroProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroProfessorActionPerformed
+        controller.telaCadastroProfessor();
+    }//GEN-LAST:event_cadastroProfessorActionPerformed
 
-    private void notasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_notasActionPerformed
-
-    private void enceDiscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enceDiscActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_enceDiscActionPerformed
-
-    private void horarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_horarioActionPerformed
-
-    private void enceSemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enceSemeActionPerformed
-        // TODO add your handling code here:
+    private void semestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreActionPerformed
         controller.telaSemestre();
-    }//GEN-LAST:event_enceSemeActionPerformed
+    }//GEN-LAST:event_semestreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,17 +190,19 @@ public class Adm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bPeriodoMatricula;
-    private javax.swing.JButton cadAluno;
-    private javax.swing.JButton cadProf;
-    private javax.swing.JButton enceDisc;
-    private javax.swing.JButton enceSeme;
-    private javax.swing.JButton escolher;
-    private javax.swing.JButton horario;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel labelCad;
-    private javax.swing.JLabel labelTitulo;
-    private javax.swing.JButton notas;
+    private javax.swing.JMenuItem Notas;
+    private javax.swing.JLabel Titulo;
+    private javax.swing.JMenuItem cadastroAluno;
+    private javax.swing.JMenuItem cadastroProfessor;
+    private javax.swing.JMenuItem disciplina;
+    private javax.swing.JMenuItem horario;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem matricula;
+    private javax.swing.JMenu notas;
+    private javax.swing.JLabel painel;
+    private javax.swing.JMenuItem sair;
+    private javax.swing.JMenuItem semestre;
     // End of variables declaration//GEN-END:variables
 }

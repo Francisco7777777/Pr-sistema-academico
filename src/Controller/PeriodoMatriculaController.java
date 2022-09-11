@@ -34,9 +34,19 @@ public class PeriodoMatriculaController {
     }
     
     public void alterarController() {
-        int linha = this.view.getJtTabelaPerMat().getSelectedRow();
+        int linha = this.view.getTabelaPerMat().getSelectedRow();
         if (linha < 0) {
             this.view.exibirMenssagem("Você deve selecione uma linha para auterar os dados.");
+        } else {
+            PeriodoMatricula perMatricula = new PeriodoMatricula();
+            
+            int id = (int) this.view.getTabelaPerMat().getValueAt(linha, 0);
+            
+            perMatricula.setId(id);
+            perMatricula.setProfessorStatus(this.view.getProfessorStatus().getSelectedIndex());
+            perMatricula.setAlunoStatus(this.view.getAlunoStatus().getSelectedIndex());
+            
+            periodoMatriculaDao.update(perMatricula);
         }
     }
     
@@ -44,7 +54,7 @@ public class PeriodoMatriculaController {
         periodoMatricula = periodoMatriculaDao.listarPeriodoMatricula();
         
         // É preciso um modelo para a tabela (default). 
-        DefaultTableModel modelo = (DefaultTableModel) this.view.getJtTabelaPerMat().getModel();
+        DefaultTableModel modelo = (DefaultTableModel) this.view.getTabelaPerMat().getModel();
         modelo.setNumRows(0);
         
         for (int i = 0; i < periodoMatricula.size(); i++) {
