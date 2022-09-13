@@ -8,6 +8,7 @@ package Model;
 public class Horario {
     private Integer id;
     private Turno turno;
+    private String dia;
     private String h_inicial;
     private String h_final;
     
@@ -17,9 +18,10 @@ public class Horario {
     public Horario() {
     }
 
-    public Horario(Integer id, Turno turno, String h_inicial, String h_final, Disciplina disciplina) {
+    public Horario(Integer id, Turno turno, String dia, String h_inicial, String h_final, Disciplina disciplina) {
         this.id = id;
         this.turno = turno;
+        this.dia = dia;
         this.h_inicial = h_inicial;
         this.h_final = h_final;
         this.disciplina = disciplina;
@@ -66,4 +68,12 @@ public class Horario {
         this.disciplina = disciplina;
     }
 
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+    
 }

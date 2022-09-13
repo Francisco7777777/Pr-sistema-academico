@@ -10,11 +10,13 @@ import java.util.List;
  */
 public interface DisciplinaDAO {
     
-    void insert(Disciplina obj);
+    public boolean insert(Disciplina obj);
 		
-    void update(Disciplina obj);
+    public Disciplina selecionar(Integer cod);
+            
+    public void update(Disciplina obj);
 		
-    void deletePorNumR(Integer cod);
+    public void deletePorNumR(Integer cod);
 
-    List<Disciplina> listarProf();      // Emcontrar tudo.
+    public List<Disciplina> listarDisciplinas();
 }

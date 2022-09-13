@@ -34,8 +34,8 @@ public class Adm extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         cadastroProfessor = new javax.swing.JMenuItem();
         cadastroAluno = new javax.swing.JMenuItem();
-        semestre = new javax.swing.JMenuItem();
         matricula = new javax.swing.JMenuItem();
+        semestre = new javax.swing.JMenuItem();
         notas = new javax.swing.JMenu();
         disciplina = new javax.swing.JMenuItem();
         horario = new javax.swing.JMenuItem();
@@ -78,6 +78,15 @@ public class Adm extends javax.swing.JFrame {
         });
         jMenu1.add(cadastroAluno);
 
+        matricula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        matricula.setText("Disciplinas");
+        matricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matriculaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(matricula);
+
         semestre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         semestre.setText("Semestre ");
         semestre.addActionListener(new java.awt.event.ActionListener() {
@@ -86,10 +95,6 @@ public class Adm extends javax.swing.JFrame {
             }
         });
         jMenu1.add(semestre);
-
-        matricula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        matricula.setText("Matricula");
-        jMenu1.add(matricula);
 
         jMenuBar1.add(jMenu1);
 
@@ -152,6 +157,10 @@ public class Adm extends javax.swing.JFrame {
     private void semestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreActionPerformed
         controller.telaSemestre();
     }//GEN-LAST:event_semestreActionPerformed
+
+    private void matriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculaActionPerformed
+        controller.telaDisciplinas();
+    }//GEN-LAST:event_matriculaActionPerformed
 
     /**
      * @param args the command line arguments

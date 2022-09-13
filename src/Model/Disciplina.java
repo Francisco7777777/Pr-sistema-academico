@@ -1,6 +1,9 @@
 
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Francisco Mendonça
@@ -8,23 +11,23 @@ package Model;
 public class Disciplina {
     private Integer cod;
     private String nome;
-    private boolean status;
+    private Integer status;
     private Integer carga_horaria;
     
-    private Professor professor;
     private Semestre semestre;
-
+    private Horario todosHorarios;
+    
     public Disciplina() {
     }
 
-    public Disciplina(Integer cod, String nome, boolean status, Integer carga_horaria, Professor professor, Semestre semestre) {
+    public Disciplina(Integer cod, String nome, Integer status, Integer carga_horaria, Semestre semestre) {
         this.cod = cod;
         this.nome = nome;
         this.status = status;
         this.carga_horaria = carga_horaria;
-        this.professor = professor;
         this.semestre = semestre;
     }
+    
     
     public Integer getCod() {
         return cod;
@@ -42,11 +45,11 @@ public class Disciplina {
         this.nome = nome;
     }
 
-    public boolean isStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -58,14 +61,6 @@ public class Disciplina {
         this.carga_horaria = carga_horaria;
     }
 
-    public Professor getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
-    }
-
     public Semestre getSemestre() {
         return semestre;
     }
@@ -73,5 +68,13 @@ public class Disciplina {
     public void setSemestre(Semestre semestre) {
         this.semestre = semestre;
     }    
-   
+
+    public Horario getTodosHorarios() {
+        return todosHorarios;
+    }
+
+    public void setTodosHorarios(Horario todosHorarios) {
+        this.todosHorarios = todosHorarios;
+    }
+    
 }

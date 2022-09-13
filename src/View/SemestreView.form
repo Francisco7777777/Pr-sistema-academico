@@ -124,7 +124,7 @@
                   <Component id="cadastrar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="alterar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="50" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="242" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>

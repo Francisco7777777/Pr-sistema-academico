@@ -10,11 +10,11 @@ import java.util.List;
  */
 public interface HorarioDAO {
     
-    void insert(Horario obj);
+    public boolean insert(Horario obj);
 		
-    void update(Horario obj);
+    //void update(Horario obj);
 		
-    void deletePorNumR(Integer id);
+    //void deletePorNumR(Integer id);
 
-    List<Horario> listarProf();      // Emcontrar tudo.
+    //List<Horario> listarProf();      // Emcontrar tudo.
 }

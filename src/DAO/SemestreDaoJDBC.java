@@ -136,5 +136,29 @@ public class SemestreDaoJDBC implements SemestreDAO{
         }
         return lista;
     }
+
+    @Override
+    public int selecionarUltimoId() {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        
+        try {
+            st = conn.prepareStatement("SELECT MAX(id) FROM semestre");
+            rs = st.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            
+        } 
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
+        return 0;
+    }
     
 }

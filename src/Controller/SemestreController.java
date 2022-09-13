@@ -61,31 +61,37 @@ public class SemestreController {
     }
     
     public void alterarController() {
-        String sdInicial = view.getDataInicial().getText();
-        String sdFinal = view.getDataFinal().getText();
-        Date data_ini;
-        Date data_fnl;
-        Semestre semestre = new Semestre();
         
-        try {
-            semestre.setId(Integer.parseInt(view.getId().getText()));
-            data_ini = (sdf.parse(sdInicial));
-            data_fnl = (sdf.parse(sdFinal));
-            Integer perMatProf = view.getPerMatProf().getSelectedIndex();
-            Integer perMatAluno = view.getPerMatAluno().getSelectedIndex();
-            
-            semestre.setData_inicial(data_ini);
-            semestre.setData_final(data_fnl);
-            semestre.setPeriodoMatriculaProfessor(perMatProf);
-            semestre.setPeriodoMatriculaAluno(perMatAluno);
-            Integer status = view.getStatus().getSelectedIndex();
-            
-            semestre.setStatus(status);
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(SemestreController.class.getName()).log(Level.SEVERE, null, ex);
+        int linha = this.view.getTabelaSemestre().getSelectedRow();
+        if (linha < 0) {
+            this.view.exibirMenssagem("Você deve selecionar uma linha para alterar os dados!");
+        } else {
+            String sdInicial = view.getDataInicial().getText();
+            String sdFinal = view.getDataFinal().getText();
+            Date data_ini;
+            Date data_fnl;
+            Semestre semestre = new Semestre();
+
+            try {
+                semestre.setId(Integer.parseInt(view.getId().getText()));
+                data_ini = (sdf.parse(sdInicial));
+                data_fnl = (sdf.parse(sdFinal));
+                Integer perMatProf = view.getPerMatProf().getSelectedIndex();
+                Integer perMatAluno = view.getPerMatAluno().getSelectedIndex();
+
+                semestre.setData_inicial(data_ini);
+                semestre.setData_final(data_fnl);
+                semestre.setPeriodoMatriculaProfessor(perMatProf);
+                semestre.setPeriodoMatriculaAluno(perMatAluno);
+                Integer status = view.getStatus().getSelectedIndex();
+
+                semestre.setStatus(status);
+
+            } catch (ParseException ex) {
+                Logger.getLogger(SemestreController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            semestreDao.update(semestre);
         }
-        semestreDao.update(semestre);
     }
     
     public void listarController() {

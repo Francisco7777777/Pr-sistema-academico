@@ -54,11 +54,14 @@ public class CadAluno extends javax.swing.JFrame {
         setResizable(false);
 
         labelTitulo.setBackground(new java.awt.Color(0, 102, 255));
-        labelTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText("Cadastrar Aluno");
+        labelTitulo.setMaximumSize(new java.awt.Dimension(85, 32));
+        labelTitulo.setMinimumSize(new java.awt.Dimension(85, 32));
         labelTitulo.setOpaque(true);
+        labelTitulo.setPreferredSize(new java.awt.Dimension(85, 32));
 
         labelNome.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         labelNome.setForeground(new java.awt.Color(0, 0, 0));
@@ -223,8 +226,8 @@ public class CadAluno extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

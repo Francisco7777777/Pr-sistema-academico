@@ -4,7 +4,7 @@ package Controller;
 import View.Adm;
 import View.CadAluno;
 import View.CadProf;
-import View.PeriodoMatriculaView;
+import View.DisciplinaView;
 import View.SemestreView;
 
 /**
@@ -32,7 +32,7 @@ public class AdminController {
     }
 
     public void telaPeriodoMatricula() {
-        PeriodoMatriculaView periodoMatricula = new PeriodoMatriculaView();
+        DisciplinaView periodoMatricula = new DisciplinaView();
         periodoMatricula.setVisible(true);
         this.view.dispose();
     }
@@ -41,6 +41,12 @@ public class AdminController {
        SemestreView semestre = new SemestreView();
        semestre.setVisible(true);
        this.view.dispose();
+    }
+
+    public void telaDisciplinas() {
+        DisciplinaView disciplina = new DisciplinaView();
+        disciplina.setVisible(true);
+        this.view.dispose();      
     }
     
 }

@@ -17,12 +17,18 @@ public class FabricaDAO {
     }
     
     // Classe alciliar que fica responsavel por intanciar os objetos: 
-    public static PeriodoMatriculaDAO criarPeriodoMatriculaDao() {
-	return new PeriodoMatriculaDaoJDBC(DB.getConnection()); 
+    public static DisciplinaDAO criarDisciplinaDao() {
+	return new DisciplinaDaoJDBC(DB.getConnection()); 
     }
     
     // Classe alciliar que fica responsavel por intanciar os objetos: 
     public static SemestreDAO criarSemestreDao() {
 	return new SemestreDaoJDBC(DB.getConnection()); 
     }
+    
+    // Classe alciliar que fica responsavel por intanciar os objetos: 
+    public static HorarioDAO criarHorarioDao() {
+	return new HorarioDaoJDBC(DB.getConnection()); 
+    }
+    
 }

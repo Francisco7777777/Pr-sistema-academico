@@ -13,8 +13,10 @@ public interface SemestreDAO {
     public void insert(Semestre obj);
 		
     public void update(Semestre obj);
+    
+    public int selecionarUltimoId();
 		
-    //public void deletePorNumR(Integer id);
+    //public void delete(Integer id);
 
     public Semestre selecionarPorId(Integer id);
     
