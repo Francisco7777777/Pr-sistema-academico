@@ -8,7 +8,7 @@ import Model.Aluno;
 import Model.Professor;
 import View.Adm;
 import View.Login;
-import View.Prof;
+import View.ProfessorView;
 import View.TeAluno;
 
 /**
@@ -44,7 +44,7 @@ public class LoginController {
                     this.view.dispose();                   // Fechar a tela anterior.
 
                 } else if (professorDao.altenticarUsuarioDAO(usuarioModelo)) {
-                    Prof professor = new Prof();
+                    ProfessorView professor = new ProfessorView();
                     professor.setVisible(true);       // Abrir tela.
                     this.view.dispose();
                 } else {

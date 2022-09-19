@@ -34,7 +34,9 @@ public class CadastroProfessorController {
 
             Professor professor = new Professor(numRegistro, nome, emal, senha, adiministrador);
             
-            if (alunoJaExiste(numRegistro)) {
+            if (testarCampos()) {
+                this.view.exibirMenssagem("A campo vasio!");
+            } else if (alunoJaExiste(numRegistro)) {
                 if (professorDao.insert(professor)) {
                     this.view.exibirMenssagem("Professor cadastrado com sucesso!");
                     limparCamposController();
@@ -48,6 +50,14 @@ public class CadastroProfessorController {
             this.view.exibirMenssagem("Número de registro digitada incorretamente. Só é "
                     + "permitido matricula com caracteres numéricos inteiros!");
         } 
+    }
+    
+    private boolean testarCampos() {
+        if (this.view.getNumRegistro().getText().isEmpty() || this.view.getNome().getText().isEmpty() 
+                || this.view.getEmail().getText().isEmpty() || this.view.getSenha().getText().isEmpty()){
+            return true;
+        }
+        return false;
     }
     
     private boolean alunoJaExiste(Integer matricula) {

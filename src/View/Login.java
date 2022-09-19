@@ -84,6 +84,11 @@ public class Login extends javax.swing.JFrame {
                 botaoLoginActionPerformed(evt);
             }
         });
+        botaoLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                botaoLoginKeyPressed(evt);
+            }
+        });
 
         botaoSair.setBackground(new java.awt.Color(255, 0, 0));
         botaoSair.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -171,6 +176,10 @@ public class Login extends javax.swing.JFrame {
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
         controller.sairController();
     }//GEN-LAST:event_botaoSairActionPerformed
+
+    private void botaoLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botaoLoginKeyPressed
+        
+    }//GEN-LAST:event_botaoLoginKeyPressed
 
     /**
      * @param args the command line arguments
